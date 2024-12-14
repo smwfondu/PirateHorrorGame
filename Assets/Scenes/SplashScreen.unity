@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pixelationMaterial: {fileID: 2100000, guid: 64b7c41cdc1db6a4fa73110b51ff54d3, type: 2}
   pixelDensity: 420
-  maxDistance: 20
+  maxDistance: 800
 --- !u!1 &1148639825
 GameObject:
   m_ObjectHideFlags: 0

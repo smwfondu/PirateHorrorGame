@@ -2007,5 +2007,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/SplashScreen.unity
   - Assets/Scenes/DayLoadingScreen.unity
   - Assets/Scenes/Day 1.unity
-  playerPath: C:/Users/dudea/Documents/Unity/Pirate Horror Game/Builds/12-12 4/Pirate
+  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-14/Pirate
     Horror Game.exe

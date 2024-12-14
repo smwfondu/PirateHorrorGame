@@ -8,7 +8,7 @@ public class BinocularZoom : MonoBehaviour
 
     private float targetFOV;
     private float zoomSpeed = 5f;
-    private float targetScale = 2.5f; // The starting scale of the overlay
+    public float targetScale = 3f; // The starting scale of the overlay
     private float minScale = 1.0f;    // The zoomed-in scale of the overlay
 
     private void Start()
@@ -46,7 +46,7 @@ public class BinocularZoom : MonoBehaviour
             else
             {
                 targetFOV = 70f; // Default FOV
-                targetScale = 2.5f; // Default scale
+                targetScale = 3f; // Default scale
             }
 
             // Smoothly transition to the target FOV

@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{639BF7ED-B24D-D3C1-D840-C079D33D84BB}</ProjectGuid>
+    <ProjectGuid>{5F658290-7A2D-E4B5-C1FA-8E9AC9BA47B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -68,6 +68,7 @@
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />
     <Compile Include="Assets\Scripts\CannonPolish.cs" />
     <Compile Include="Assets\Scripts\TimelineManager.cs" />
+    <Compile Include="Assets\HookHandController.cs" />
     <Compile Include="Assets\Scripts\FishInteractable.cs" />
     <Compile Include="Assets\Scripts\ParrotController.cs" />
     <Compile Include="Assets\Scripts\TypingTextEffect.cs" />
@@ -1140,15 +1141,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Crest.Helpers.Editor.csproj">
-      <Project>{C2F865AA-191B-E4B6-AC39-1F1BDAE85DE8}</Project>
+      <Project>{1C559977-05B9-FE57-A810-B7FFACADBF4F}</Project>
       <Name>Crest.Helpers.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Crest.csproj">
-      <Project>{41D60193-0BC8-B970-14E4-539F359B3E44}</Project>
+      <Project>{E4B70181-1816-CC6F-BD80-71B1B9666340}</Project>
       <Name>Crest</Name>
     </ProjectReference>
     <ProjectReference Include="Crest.Examples.csproj">
-      <Project>{B43EA0A2-F3D7-5108-5133-E0A1EB948ADF}</Project>
+      <Project>{3DA035A7-2FAB-574E-AF6A-C02214E8735C}</Project>
       <Name>Crest.Examples</Name>
     </ProjectReference>
   </ItemGroup>

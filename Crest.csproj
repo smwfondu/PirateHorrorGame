@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{41D60193-0BC8-B970-14E4-539F359B3E44}</ProjectGuid>
+    <ProjectGuid>{E4B70181-1816-CC6F-BD80-71B1B9666340}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Crest</AssemblyName>

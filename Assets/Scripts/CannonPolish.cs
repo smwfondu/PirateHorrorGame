@@ -4,7 +4,7 @@ using TMPro;
 
 public class CannonPolish : MonoBehaviour
 {
-    public Image hookHand;
+    public Transform hookHand;
     public PlayerInteract pi;
     public float polishTime = 3f;
     public TextMeshProUGUI cannonTaskText;
@@ -23,10 +23,6 @@ public class CannonPolish : MonoBehaviour
 
     private void Start()
     {
-        hookColor = hookHand.color;
-        hookColor.a = 0f;  // Set initial alpha to 0 (invisible)
-        hookHand.color = hookColor;
-
         cannonRenderer = GetComponent<Renderer>();
         ps = GetComponentInChildren<ParticleSystem>();
 
@@ -47,9 +43,8 @@ public class CannonPolish : MonoBehaviour
         {
             if (!isPolishing)
             {
-                // Start polishing, make hookHand visible
-                hookColor.a = 1f;
-                hookHand.color = hookColor;
+                // Start Hookhand Movement
+
                 isPolishing = true;
             }
 
@@ -68,9 +63,7 @@ public class CannonPolish : MonoBehaviour
                 ps.Play();
                 cannonTaskText.text = "Clean Cannons: " + cannonsPolished + "/" + targetCannonsPolished;
 
-                // Hide the hookHand once polishing is complete
-                hookColor.a = 0f;
-                hookHand.color = hookColor;
+                // Stop Hookhand Movement
 
                 // Check if all cannons are polished
                 if (cannonsPolished == targetCannonsPolished)
@@ -83,8 +76,8 @@ public class CannonPolish : MonoBehaviour
         {
             // Stop polishing and hide the hookHand
             isPolishing = false;
-            hookColor.a = 0f;
-            hookHand.color = hookColor;
+
+            // Stop Hookhand Movement
         }
     }
 
