@@ -5726,8 +5726,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Created by: William Fondoulis'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ebf5502660fa6294491e66e15d76e590, type: 2}
-  m_sharedMaterial: {fileID: -3192484188212014308, guid: ebf5502660fa6294491e66e15d76e590, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f45791f6986a49a4381cfebf581a31e7, type: 2}
+  m_sharedMaterial: {fileID: 2876907492446360480, guid: f45791f6986a49a4381cfebf581a31e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8830,7 +8830,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3192484188212014308, guid: ebf5502660fa6294491e66e15d76e590, type: 2}
+  - {fileID: 2876907492446360480, guid: f45791f6986a49a4381cfebf581a31e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

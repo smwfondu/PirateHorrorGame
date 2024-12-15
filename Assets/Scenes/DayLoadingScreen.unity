@@ -277,7 +277,7 @@ MonoBehaviour:
   m_text: 'Day 1: Paloma'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 14ab4e8ee9318d244b02af1ff99ae996, type: 2}
-  m_sharedMaterial: {fileID: 8144717905208117857, guid: 14ab4e8ee9318d244b02af1ff99ae996, type: 2}
+  m_sharedMaterial: {fileID: 594754403552207155, guid: 14ab4e8ee9318d244b02af1ff99ae996, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

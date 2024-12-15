@@ -4,17 +4,17 @@ ScriptsOnlyBuild:
     - BinocularZoom
     - BoatCameraBobbing
     - CannonPolish
-    - CanvasManager
     - CargoChest
     - DayNightCycle
     - DontDestroyOnLoadObject
     - FirstPersonController
     - FishBehavior
+    - FishDestroyer
     - FishInteractable
-    - FishingMinigame
-    - FishingStarter
-    - FollowCursor
+    - FishSpawner
+    - HookHandController
     - ParrotController
+    - PauseGame
     - PixelationEffect
     - PlayerInteract
     - ShipRock
@@ -75,8 +75,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -88,7 +90,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.Slider
   serializedClasses:
     Crest:
     - Crest.OceanRenderer/DebugFields
@@ -152,12 +153,7 @@ ScriptsOnlyBuild:
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
-    - UnityEngine.UI.AnimationTriggers
-    - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-    - UnityEngine.UI.Navigation
-    - UnityEngine.UI.Slider/SliderEvent
-    - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: TimelineManager
@@ -197,6 +193,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -212,23 +212,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1844}
     - Class: 114
-      Script: {instanceID: 2624}
-    - Class: 114
       Script: {instanceID: 2630}
     - Class: 114
       Script: {instanceID: 2682}
     - Class: 114
       Script: {instanceID: 2924}
     - Class: 114
-      Script: {instanceID: 3110}
-    - Class: 114
       Script: {instanceID: 3138}
     - Class: 114
       Script: {instanceID: 3302}
     - Class: 114
       Script: {instanceID: 3554}
-    - Class: 114
-      Script: {instanceID: 3988}
     - Class: 114
       Script: {instanceID: 4004}
     - Class: 114
@@ -240,11 +234,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5260}
     - Class: 114
-      Script: {instanceID: 5272}
-    - Class: 114
       Script: {instanceID: 5412}
-    - Class: 114
-      Script: {instanceID: 5456}
     - Class: 114
       Script: {instanceID: 5532}
     - Class: 114
@@ -252,30 +242,36 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6072}
     - Class: 114
+      Script: {instanceID: 6250}
+    - Class: 114
       Script: {instanceID: 6276}
     - Class: 114
-      Script: {instanceID: 6280}
+      Script: {instanceID: 6282}
     - Class: 114
-      Script: {instanceID: 6468}
+      Script: {instanceID: 6470}
     - Class: 114
-      Script: {instanceID: 6612}
+      Script: {instanceID: 6614}
     - Class: 114
-      Script: {instanceID: 6788}
+      Script: {instanceID: 6790}
     - Class: 114
-      Script: {instanceID: 6940}
+      Script: {instanceID: 6942}
     - Class: 114
-      Script: {instanceID: 7456}
+      Script: {instanceID: 7458}
     - Class: 114
-      Script: {instanceID: 7924}
+      Script: {instanceID: 7926}
     - Class: 114
-      Script: {instanceID: 8488}
+      Script: {instanceID: 8490}
+    - Class: 114
+      Script: {instanceID: 27190}
+    - Class: 114
+      Script: {instanceID: 74334}
+    - Class: 114
+      Script: {instanceID: 123608}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
       Script: {instanceID: 0}
     - Class: 124
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -335,12 +331,10 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5532}
     - Class: 114
-      Script: {instanceID: 6280}
+      Script: {instanceID: 6282}
     - Class: 114
-      Script: {instanceID: 6612}
+      Script: {instanceID: 6614}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -456,27 +450,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6276}
     - Class: 114
-      Script: {instanceID: 6468}
+      Script: {instanceID: 6470}
     - Class: 114
-      Script: {instanceID: 6612}
+      Script: {instanceID: 6614}
     - Class: 114
-      Script: {instanceID: 7276}
+      Script: {instanceID: 7278}
     - Class: 114
-      Script: {instanceID: 7456}
+      Script: {instanceID: 7458}
     - Class: 114
-      Script: {instanceID: 7512}
+      Script: {instanceID: 7514}
     - Class: 114
-      Script: {instanceID: 7716}
+      Script: {instanceID: 7718}
     - Class: 114
-      Script: {instanceID: 7754}
+      Script: {instanceID: 7756}
     - Class: 114
-      Script: {instanceID: 8010}
+      Script: {instanceID: 8012}
     - Class: 114
-      Script: {instanceID: 8064}
+      Script: {instanceID: 8066}
     - Class: 114
-      Script: {instanceID: 8352}
+      Script: {instanceID: 8354}
     - Class: 114
-      Script: {instanceID: 8488}
+      Script: {instanceID: 8490}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -750,12 +744,6 @@ ScriptsOnlyBuild:
     className: CoroutineRunner
   - hash:
       serializedVersion: 2
-      Hash: e1dc757254a0ef24262ceec9f0fa8771
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FishingStarter
-  - hash:
-      serializedVersion: 2
       Hash: fe111e830148f07e5735ebe7620f752e
     assemblyName: Unity.Postprocessing.Runtime
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -876,7 +864,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 96880c0d15cb52b18073a3a9850a0394
+      Hash: 13c89a778d2069da24687b2ff94b037a
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerInteract
@@ -1006,12 +994,6 @@ ScriptsOnlyBuild:
     assemblyName: Crest.Examples
     namespaceName: Crest.Examples
     className: MaskFill
-  - hash:
-      serializedVersion: 2
-      Hash: 6b31673041a09b04d7c8c0185992062d
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FishingMinigame
   - hash:
       serializedVersion: 2
       Hash: 7b84df64e9e82a8cc3f9fd2fcbb74ddd
@@ -1200,7 +1182,7 @@ ScriptsOnlyBuild:
     className: ScreenSpaceReflections
   - hash:
       serializedVersion: 2
-      Hash: 0dd496b1e9dc6bb78a0a2782a4b7e015
+      Hash: bd363482a62af6ee6de1822864c20090
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: CannonPolish
@@ -1272,7 +1254,7 @@ ScriptsOnlyBuild:
     className: AmbientOcclusion
   - hash:
       serializedVersion: 2
-      Hash: acb18299087d8f0dfa1ad42aa6303233
+      Hash: 62d8e47b29d9cb86fe0db88ed1c1faad
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: BinocularZoom
@@ -1492,6 +1474,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: ceceb7ccd6d2de54f0cbf77a30031bbb
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HookHandController
   - hash:
       serializedVersion: 2
       Hash: cfea1326e624e929fa9eac491d74ce5b
@@ -2002,10 +1990,28 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 28cbe7b2cac9e43f424de52b35d48324
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FishSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: 40b4dc8d3db44ff4f2f7ddc0fc38fd67
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FishDestroyer
+  - hash:
+      serializedVersion: 2
+      Hash: 549d828bc59f1b22b39e09a567b49a72
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PauseGame
   platform: 19
   scenePathNames:
   - Assets/Scenes/SplashScreen.unity
   - Assets/Scenes/DayLoadingScreen.unity
   - Assets/Scenes/Day 1.unity
-  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-14/Pirate
+  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-15/Pirate
     Horror Game.exe

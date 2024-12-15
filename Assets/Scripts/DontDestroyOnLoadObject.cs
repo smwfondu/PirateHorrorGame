@@ -25,7 +25,7 @@ public class DontDestroyOnLoadObject : MonoBehaviour
         {
             if (SceneManager.GetSceneByBuildIndex(sceneEnd) == SceneManager.GetActiveScene())
             {
-                gameObject.SetActive(false);
+                Destroy(gameObject);
             }
         }
     }

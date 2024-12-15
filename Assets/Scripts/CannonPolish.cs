@@ -88,7 +88,7 @@ public class CannonPolish : MonoBehaviour
     void FixedUpdate()
     {
         // Check if the player is looking at this cannon and holding left mouse
-        if (IsPlayerLookingAtCannon() && Input.GetMouseButton(0) && pi.grabbedList)
+        if (IsPlayerLookingAtCannon() && Input.GetMouseButton(0) && pi.grabbedList && !isPolished)
         {
             // Particle effect first after 0.5 seconds, then every 1 second while left-click is held down
             particleTimer += Time.deltaTime;

@@ -11,8 +11,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private DayNightCycle dayNightCycle;
     [SerializeField] private TextMeshProUGUI interactStatusText;
     [SerializeField] private GameObject taskList;
-    [SerializeField] private GameObject playerCamera;
-    [SerializeField] private FishingStarter fishingStarter;
+    [SerializeField] private Material mobileMaterial;
 
     private GameObject parrot;
     private FishInteractable currentFish;
@@ -24,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Start()
     {
+        interactStatusText.material = mobileMaterial;
         taskList.SetActive(false);
         parrot = GameObject.FindGameObjectWithTag("Parrot");
     }
@@ -37,15 +37,7 @@ public class PlayerInteract : MonoBehaviour
             return; // Exit early to avoid conflicting actions
         }
 
-        // Only handle fishing if inside a fishing collider
-        if (inFishingCollider)
-        {
-            HandleFishingInteraction();
-        }
-        else
-        {
-            HandleInteraction();
-        } 
+        HandleInteraction();
     }
 
     // Handles player interactions with objects
@@ -74,10 +66,6 @@ public class PlayerInteract : MonoBehaviour
                 {
                     interactStatusText.text = "";
                 }
-            }
-            else if (inFishingCollider)
-            {
-                HandleFishingInteraction();
             }
             else
             {
@@ -157,23 +145,6 @@ public class PlayerInteract : MonoBehaviour
             currentFish.DropFish(); // Call the fish's drop method
             holdingFish = false;
             currentFish = null; // Reset the reference to the current fish
-        }
-    }
-
-    // Handles interaction with fishing spots
-    private void HandleFishingInteraction()
-    {
-        if (!fishingStarter.inMinigame)
-        {
-            interactStatusText.text = "Left click to fish";
-            if (Input.GetMouseButtonDown(0))
-            {
-                //fishingStarter.StartMinigame();
-            }
-        }
-        else
-        {
-            interactStatusText.text = "";
         }
     }
 }
