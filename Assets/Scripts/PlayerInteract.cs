@@ -31,7 +31,7 @@ public class PlayerInteract : MonoBehaviour
     private void Update()
     {
         // Drop the fish if holding one
-        if (holdingFish && Input.GetKeyDown(KeyCode.E))
+        if (holdingFish && Input.GetMouseButtonDown(0))
         {
             DropCurrentFish();
             return; // Exit early to avoid conflicting actions
@@ -93,26 +93,25 @@ public class PlayerInteract : MonoBehaviour
     // Handles interaction with the bed
     private void HandleBedInteraction()
     {
-        interactStatusText.text = "Press E to sleep";
-        if (Input.GetKey(KeyCode.E))
+        if (dayNightCycle.GetNightStatus())
         {
-            if (dayNightCycle.GetNightStatus())
+            interactStatusText.text = "Left click to sleep!";
+            if (Input.GetMouseButtonDown(0))
             {
                 SceneManager.LoadScene(0);
-                interactStatusText.text = "Going to sleep!";
             }
-            else
-            {
-                interactStatusText.text = "Can't sleep now, too bright outside!";
-            }
+        }
+        else
+        {
+            interactStatusText.text = "Can't sleep now, too bright outside!";
         }
     }
 
     // Handles interaction with the task list
     private void HandleTaskListInteraction(RaycastHit hit)
     {
-        interactStatusText.text = "Press E to grab";
-        if (Input.GetKeyDown(KeyCode.E))
+        interactStatusText.text = "Left click to grab";
+        if (Input.GetMouseButtonDown(0))
         {
             Destroy(hit.collider.gameObject);
             taskList.SetActive(true);
@@ -133,8 +132,8 @@ public class PlayerInteract : MonoBehaviour
     {
         if (!holdingFish)
         {
-            interactStatusText.text = "Press E to grab fish";
-            if (Input.GetKeyDown(KeyCode.E))
+            interactStatusText.text = "Left click to Stab fish";
+            if (Input.GetMouseButtonDown(0))
             {
                 FishInteractable fish = hit.collider.GetComponent<FishInteractable>();
                 if (fish != null)
@@ -166,10 +165,10 @@ public class PlayerInteract : MonoBehaviour
     {
         if (!fishingStarter.inMinigame)
         {
-            interactStatusText.text = "Press E to fish";
-            if (Input.GetKeyDown(KeyCode.E))
+            interactStatusText.text = "Left click to fish";
+            if (Input.GetMouseButtonDown(0))
             {
-                fishingStarter.StartMinigame();
+                //fishingStarter.StartMinigame();
             }
         }
         else

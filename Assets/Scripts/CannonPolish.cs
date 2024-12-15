@@ -4,10 +4,12 @@ using TMPro;
 
 public class CannonPolish : MonoBehaviour
 {
-    public Transform hookHand;
     public PlayerInteract pi;
     public float polishTime = 3f;
     public TextMeshProUGUI cannonTaskText;
+
+    public AudioClip scrapSound;  // Reference to the scrap sound clip
+    private AudioSource audioSource;  // AudioSource to play the sound
 
     private float polishProgress = 0f;
     private bool isPolishing = false;
@@ -18,13 +20,20 @@ public class CannonPolish : MonoBehaviour
     private Renderer cannonRenderer;
     private Color originalColor;
     private Color darkColor;
-    private Color hookColor;
     private ParticleSystem ps;
+
+    // New particle effect prefab
+    public GameObject psminiPrefab;  // Particle system prefab to instantiate
+    private float particleTimer = 0f;
+    private float firstEffectTime = 0.5f;  // Time for first effect
+    private float subsequentEffectTime = 0.7f;  // Time for subsequent effects
+    private bool isFirstParticle = true;  // Flag to track the first particle
 
     private void Start()
     {
         cannonRenderer = GetComponent<Renderer>();
         ps = GetComponentInChildren<ParticleSystem>();
+        audioSource = GetComponent<AudioSource>();
 
         originalColor = cannonRenderer.material.color;
         darkColor = originalColor * 0.3f;
@@ -39,12 +48,10 @@ public class CannonPolish : MonoBehaviour
         if (isPolished) return;  // Skip if this cannon is already polished
 
         // Check if the player is looking at this cannon and holding "E"
-        if (IsPlayerLookingAtCannon() && Input.GetKey(KeyCode.E) && pi.grabbedList)
+        if (IsPlayerLookingAtCannon() && Input.GetMouseButton(0) && pi.grabbedList)
         {
             if (!isPolishing)
             {
-                // Start Hookhand Movement
-
                 isPolishing = true;
             }
 
@@ -63,8 +70,6 @@ public class CannonPolish : MonoBehaviour
                 ps.Play();
                 cannonTaskText.text = "Clean Cannons: " + cannonsPolished + "/" + targetCannonsPolished;
 
-                // Stop Hookhand Movement
-
                 // Check if all cannons are polished
                 if (cannonsPolished == targetCannonsPolished)
                 {
@@ -76,8 +81,47 @@ public class CannonPolish : MonoBehaviour
         {
             // Stop polishing and hide the hookHand
             isPolishing = false;
+        }
+    }
 
-            // Stop Hookhand Movement
+    // In FixedUpdate()
+    void FixedUpdate()
+    {
+        // Check if the player is looking at this cannon and holding left mouse
+        if (IsPlayerLookingAtCannon() && Input.GetMouseButton(0) && pi.grabbedList)
+        {
+            // Particle effect first after 0.5 seconds, then every 1 second while left-click is held down
+            particleTimer += Time.deltaTime;
+
+            if (isFirstParticle && particleTimer >= firstEffectTime)
+            {
+                // Play the scrap sound effect
+                //PlayScrapSound();
+
+                // Instantiate the first particle effect after 0.5 seconds
+                SpawnParticleEffect();
+                particleTimer = 0f;  // Reset the timer
+                isFirstParticle = false;  // Disable the first particle flag
+            }
+            else if (!isFirstParticle && particleTimer >= subsequentEffectTime)
+            {
+                // Play the scrap sound effect
+                //PlayScrapSound();
+
+                // Instantiate subsequent particle effects every 1 second
+                SpawnParticleEffect();
+                particleTimer = 0f;  // Reset the timer
+            }
+        }
+    }
+
+    // Method to play the scrap sound
+    private void PlayScrapSound()
+    {
+        if (scrapSound != null && audioSource != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(scrapSound);  // Play the scrap sound
         }
     }
 
@@ -90,6 +134,20 @@ public class CannonPolish : MonoBehaviour
             return hit.collider.gameObject == gameObject && hit.collider.CompareTag("Cannon");
         }
         return false;
+    }
+
+    // Method to spawn the particle effect at the hit point on the cannon
+    private void SpawnParticleEffect()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 5f))  // Adjust distance as needed
+        {
+            if (hit.collider.gameObject == gameObject && hit.collider.CompareTag("Cannon"))
+            {
+                // Instantiate the particle system prefab at the hit point
+                Instantiate(psminiPrefab, hit.point, Quaternion.identity);
+            }
+        }
     }
 
     // Optional: Reset all progress when a new day starts (example function)
