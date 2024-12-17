@@ -2387,12 +2387,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524378387}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
-  m_LocalPosition: {x: -0.9, y: 4, z: -5.5}
+  m_LocalRotation: {x: -0.35355332, y: 0.61237246, z: -0.3535535, w: 0.61237246}
+  m_LocalPosition: {x: -0.9, y: 4, z: -5.499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7647227441697403026}
+  m_Father: {fileID: 3855075594310671068}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -60}
 --- !u!1 &531736984
 GameObject:
@@ -4522,8 +4522,6 @@ MonoBehaviour:
   taskList: {fileID: 112225761003992442}
   mobileMaterial: {fileID: 2100000, guid: 3b821cf75bbf8a54a80bce8d6d461f5c, type: 2}
   grabbedList: 0
-  holdingFish: 0
-  inFishingCollider: 0
 --- !u!114 &1017430307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15029,7 +15027,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 524378388}
   m_Father: {fileID: 7647227441697403026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3878862094083964060
@@ -15835,7 +15834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spectrum: {fileID: 11400000, guid: 02c797a6329139b4aa4f3722248aba4c, type: 2}
   _spectrumFixedAtRuntime: 0
-  _waveDirectionHeadingAngle: -90
+  _waveDirectionHeadingAngle: -83
   _overrideGlobalWindSpeed: 0
   _windSpeed: 20
   _respectShallowWaterAttenuation: 1
@@ -17498,7 +17497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &6710767619221560039
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18637,7 +18636,6 @@ Transform:
   m_LocalScale: {x: 0.049999993, y: 0.05, z: 0.049999993}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 524378388}
   - {fileID: 3855075594310671068}
   m_Father: {fileID: 1139125301}
   m_LocalEulerAnglesHint: {x: -47.573, y: 166.327, z: 1.527}

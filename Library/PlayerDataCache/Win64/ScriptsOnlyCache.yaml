@@ -58,7 +58,9 @@ ScriptsOnlyBuild:
     - TMPro.TextMeshProUGUI
     Unity.Timeline.Editor.dll:
     - TimelinePreferences
+    - UnityEditor.Timeline.EditorClip
     - UnityEditor.Timeline.SequenceHierarchy
+    - UnityEditor.Timeline.TimelineAssetViewModel
     - UnityEditor.Timeline.TimelineWindow
     Unity.Timeline.dll:
     - UnityEngine.Timeline.ActivationPlayableAsset
@@ -210,13 +212,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1800}
     - Class: 114
-      Script: {instanceID: 1844}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2924}
+      Script: {instanceID: 2926}
     - Class: 114
       Script: {instanceID: 3138}
     - Class: 114
@@ -224,29 +226,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3554}
     - Class: 114
-      Script: {instanceID: 4004}
+      Script: {instanceID: 4002}
     - Class: 114
-      Script: {instanceID: 4194}
+      Script: {instanceID: 4192}
     - Class: 114
-      Script: {instanceID: 4954}
+      Script: {instanceID: 4952}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5222}
     - Class: 114
-      Script: {instanceID: 5260}
+      Script: {instanceID: 5258}
     - Class: 114
-      Script: {instanceID: 5412}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5532}
+      Script: {instanceID: 5474}
     - Class: 114
-      Script: {instanceID: 5952}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 6072}
+      Script: {instanceID: 5950}
     - Class: 114
-      Script: {instanceID: 6250}
+      Script: {instanceID: 6070}
     - Class: 114
-      Script: {instanceID: 6276}
+      Script: {instanceID: 6248}
     - Class: 114
-      Script: {instanceID: 6282}
+      Script: {instanceID: 6274}
+    - Class: 114
+      Script: {instanceID: 6280}
+    - Class: 114
+      Script: {instanceID: 6408}
     - Class: 114
       Script: {instanceID: 6470}
     - Class: 114
@@ -260,13 +266,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7926}
     - Class: 114
-      Script: {instanceID: 8490}
+      Script: {instanceID: 8444}
     - Class: 114
-      Script: {instanceID: 27190}
-    - Class: 114
-      Script: {instanceID: 74334}
-    - Class: 114
-      Script: {instanceID: 123608}
+      Script: {instanceID: 8492}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -321,17 +323,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1800}
     - Class: 114
-      Script: {instanceID: 1844}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 2924}
+      Script: {instanceID: 2926}
     - Class: 114
       Script: {instanceID: 3138}
     - Class: 114
       Script: {instanceID: 3702}
     - Class: 114
-      Script: {instanceID: 5532}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 6282}
+      Script: {instanceID: 6280}
     - Class: 114
       Script: {instanceID: 6614}
     - Class: 115
@@ -396,23 +398,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1800}
     - Class: 114
-      Script: {instanceID: 1844}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 1946}
+      Script: {instanceID: 1948}
     - Class: 114
-      Script: {instanceID: 1974}
+      Script: {instanceID: 1976}
     - Class: 114
-      Script: {instanceID: 2456}
+      Script: {instanceID: 2458}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2682}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2924}
+      Script: {instanceID: 2926}
     - Class: 114
-      Script: {instanceID: 2938}
+      Script: {instanceID: 2940}
     - Class: 114
-      Script: {instanceID: 2942}
+      Script: {instanceID: 2944}
     - Class: 114
       Script: {instanceID: 3138}
     - Class: 114
@@ -422,33 +424,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3934}
     - Class: 114
-      Script: {instanceID: 4004}
+      Script: {instanceID: 4002}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 4138}
     - Class: 114
-      Script: {instanceID: 4424}
+      Script: {instanceID: 4422}
     - Class: 114
-      Script: {instanceID: 4530}
+      Script: {instanceID: 4528}
     - Class: 114
-      Script: {instanceID: 4734}
+      Script: {instanceID: 4732}
     - Class: 114
-      Script: {instanceID: 4794}
+      Script: {instanceID: 4792}
     - Class: 114
-      Script: {instanceID: 5074}
+      Script: {instanceID: 5072}
     - Class: 114
-      Script: {instanceID: 5152}
+      Script: {instanceID: 5150}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5222}
     - Class: 114
-      Script: {instanceID: 5306}
+      Script: {instanceID: 5304}
     - Class: 114
-      Script: {instanceID: 5532}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5546}
+      Script: {instanceID: 5544}
     - Class: 114
-      Script: {instanceID: 6072}
+      Script: {instanceID: 6070}
     - Class: 114
-      Script: {instanceID: 6276}
+      Script: {instanceID: 6274}
     - Class: 114
       Script: {instanceID: 6470}
     - Class: 114
@@ -470,7 +472,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8354}
     - Class: 114
-      Script: {instanceID: 8490}
+      Script: {instanceID: 8492}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -508,6 +510,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 53e329840e6d03aebec76623c3b054db
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: Slider
   - hash:
       serializedVersion: 2
       Hash: 19fb23e61b599fe4802e01e59b038984
@@ -864,7 +872,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 13c89a778d2069da24687b2ff94b037a
+      Hash: 329c9a9976f275418f4281973393c806
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerInteract
@@ -1326,16 +1334,16 @@ ScriptsOnlyBuild:
     className: GlobalMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 53e329840e6d03aebec76623c3b054db
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: Slider
-  - hash:
-      serializedVersion: 2
       Hash: 33f160a5c07e580c29aba2bd1e4db811
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 549d828bc59f1b22b39e09a567b49a72
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PauseGame
   - hash:
       serializedVersion: 2
       Hash: 191cd500c627cd6682ef6f70b8e47f2c
@@ -1504,6 +1512,12 @@ ScriptsOnlyBuild:
     assemblyName: Crest
     namespaceName: Crest
     className: RegisterFlowInput
+  - hash:
+      serializedVersion: 2
+      Hash: 28cbe7b2cac9e43f424de52b35d48324
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FishSpawner
   - hash:
       serializedVersion: 2
       Hash: 04a17b8535d6dc78f8b62699a7554269
@@ -1962,6 +1976,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
+      Hash: 40b4dc8d3db44ff4f2f7ddc0fc38fd67
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: FishDestroyer
+  - hash:
+      serializedVersion: 2
       Hash: 1dbcd6144367e6fbcf4a39c96e6ab31c
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -1990,28 +2010,10 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 28cbe7b2cac9e43f424de52b35d48324
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FishSpawner
-  - hash:
-      serializedVersion: 2
-      Hash: 40b4dc8d3db44ff4f2f7ddc0fc38fd67
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: FishDestroyer
-  - hash:
-      serializedVersion: 2
-      Hash: 549d828bc59f1b22b39e09a567b49a72
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PauseGame
   platform: 19
   scenePathNames:
   - Assets/Scenes/SplashScreen.unity
   - Assets/Scenes/DayLoadingScreen.unity
   - Assets/Scenes/Day 1.unity
-  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-15/Pirate
+  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-16/Pirate
     Horror Game.exe

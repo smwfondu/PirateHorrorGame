@@ -22,7 +22,7 @@ public class CargoChest : MonoBehaviour
     {
         if (other.CompareTag("Fish") && fishCount < requiredFish)
         {
-            if (pi.holdingFish == true) { pi.DropCurrentFish(); }
+            if (pi.GetPlayerState().y == 2) { pi.DropCurrentFish(); }
 
             // Increment the fish count and destroy the fish
             fishCount++;

@@ -20,7 +20,7 @@ public class FishInteractable : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.velocity = playerCamera.forward * throwForce;
-        player.GetComponent<PlayerInteract>().holdingFish = false;
+        player.GetComponent<PlayerInteract>().SetPlayerState(new(player.GetComponent<PlayerInteract>().GetPlayerState().x, 1));
         transform.parent = null; // Unparent the fish
         isCarried = false;
     }

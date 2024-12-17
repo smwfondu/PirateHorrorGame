@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class DontDestroyOnLoadObject : MonoBehaviour
 {
-    public int sceneEnd = 2;
+    public int sceneEnd = 1;
 
     private bool futureDelete = false;
 

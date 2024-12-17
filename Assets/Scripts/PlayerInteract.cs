@@ -17,9 +17,8 @@ public class PlayerInteract : MonoBehaviour
     private FishInteractable currentFish;
 
     [Header("Player States")]
+    private Vector2 currentPlayerState = new(1, 1);
     public bool grabbedList = false;
-    public bool holdingFish = false;
-    public bool inFishingCollider = false;
 
     private void Start()
     {
@@ -31,7 +30,7 @@ public class PlayerInteract : MonoBehaviour
     private void Update()
     {
         // Drop the fish if holding one
-        if (holdingFish && Input.GetMouseButtonDown(0))
+        if (currentPlayerState.y == 2 && Input.GetMouseButtonDown(0))
         {
             DropCurrentFish();
             return; // Exit early to avoid conflicting actions
@@ -118,7 +117,7 @@ public class PlayerInteract : MonoBehaviour
     // Handles interaction with a fish
     private void HandleFishInteraction(RaycastHit hit)
     {
-        if (!holdingFish)
+        if (currentPlayerState.y != 2)
         {
             interactStatusText.text = "Left click to Stab fish";
             if (Input.GetMouseButtonDown(0))
@@ -127,7 +126,7 @@ public class PlayerInteract : MonoBehaviour
                 if (fish != null)
                 {
                     fish.PickUpFish(); // Pick up the fish
-                    holdingFish = true;
+                    currentPlayerState = new(currentPlayerState.x, 2);
                     currentFish = fish; // Assign the fish to the currentFish variable
                 }
             }
@@ -143,8 +142,18 @@ public class PlayerInteract : MonoBehaviour
         if (currentFish != null)
         {
             currentFish.DropFish(); // Call the fish's drop method
-            holdingFish = false;
+            currentPlayerState = new(currentPlayerState.x, 1);
             currentFish = null; // Reset the reference to the current fish
         }
+    }
+
+    public Vector2 GetPlayerState()
+    {
+        return currentPlayerState;
+    }
+
+    public void SetPlayerState(Vector2 newPlayerState)
+    {
+        currentPlayerState = newPlayerState;
     }
 }
