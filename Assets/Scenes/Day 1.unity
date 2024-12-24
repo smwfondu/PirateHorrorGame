@@ -7600,7 +7600,7 @@ MonoBehaviour:
   nightSkybox: {fileID: 2100000, guid: 52fcefd712182d743a781fde12426775, type: 2}
   sunFlare: {fileID: 12100000, guid: eceed015608c74aa4bf640cdf356a1fb, type: 2}
   morningToDayDuration: 10
-  dayToSunsetDuration: 180
+  dayToSunsetDuration: 10
   sunsetToNightDuration: 5
   directionalLight: {fileID: 6203532490266863080}
 --- !u!4 &1582326182

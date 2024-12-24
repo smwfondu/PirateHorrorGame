@@ -132,6 +132,11 @@ public class DayNightCycle : MonoBehaviour
             directionalLight.intensity = intensity;
             RenderSettings.reflectionIntensity = intensity;
             RenderSettings.ambientIntensity = intensity;
+
+            if(intensity < 0.01f)
+            {
+                directionalLight.gameObject.SetActive(false);
+            }
         }
 
         if (moonMode)

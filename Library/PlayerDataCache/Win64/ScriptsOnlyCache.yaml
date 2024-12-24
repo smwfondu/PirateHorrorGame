@@ -58,9 +58,7 @@ ScriptsOnlyBuild:
     - TMPro.TextMeshProUGUI
     Unity.Timeline.Editor.dll:
     - TimelinePreferences
-    - UnityEditor.Timeline.EditorClip
     - UnityEditor.Timeline.SequenceHierarchy
-    - UnityEditor.Timeline.TimelineAssetViewModel
     - UnityEditor.Timeline.TimelineWindow
     Unity.Timeline.dll:
     - UnityEngine.Timeline.ActivationPlayableAsset
@@ -299,55 +297,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 850595691
       Script: {instanceID: 0}
-    Assets/Scenes/DayLoadingScreen.unity:
-    - Class: 1
-      Script: {instanceID: 0}
-    - Class: 4
-      Script: {instanceID: 0}
-    - Class: 20
-      Script: {instanceID: 0}
-    - Class: 21
-      Script: {instanceID: 0}
-    - Class: 28
-      Script: {instanceID: 0}
-    - Class: 48
-      Script: {instanceID: 0}
-    - Class: 81
-      Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
-    - Class: 104
-      Script: {instanceID: 0}
-    - Class: 108
-      Script: {instanceID: 0}
-    - Class: 114
-      Script: {instanceID: 1800}
-    - Class: 114
-      Script: {instanceID: 1846}
-    - Class: 114
-      Script: {instanceID: 2926}
-    - Class: 114
-      Script: {instanceID: 3138}
-    - Class: 114
-      Script: {instanceID: 3702}
-    - Class: 114
-      Script: {instanceID: 5530}
-    - Class: 114
-      Script: {instanceID: 6280}
-    - Class: 114
-      Script: {instanceID: 6614}
-    - Class: 115
-      Script: {instanceID: 0}
-    - Class: 157
-      Script: {instanceID: 0}
-    - Class: 196
-      Script: {instanceID: 0}
-    - Class: 222
-      Script: {instanceID: 0}
-    - Class: 223
-      Script: {instanceID: 0}
-    - Class: 224
-      Script: {instanceID: 0}
     Assets/Scenes/SplashScreen.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -420,6 +369,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3184}
     - Class: 114
+      Script: {instanceID: 3702}
+    - Class: 114
       Script: {instanceID: 3912}
     - Class: 114
       Script: {instanceID: 3934}
@@ -451,6 +402,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6070}
     - Class: 114
       Script: {instanceID: 6274}
+    - Class: 114
+      Script: {instanceID: 6280}
     - Class: 114
       Script: {instanceID: 6470}
     - Class: 114
@@ -2013,7 +1966,6 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SplashScreen.unity
-  - Assets/Scenes/DayLoadingScreen.unity
   - Assets/Scenes/Day 1.unity
-  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-16/Pirate
-    Horror Game.exe
+  playerPath: C:/Users/dudea/Documents/Unity/Builds/Github/PirateHorrorGame/12-23
+    2/Pirate Horror Game.exe
