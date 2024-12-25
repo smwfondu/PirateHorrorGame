@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 public class PlayerInteract : MonoBehaviour
@@ -20,15 +20,52 @@ public class PlayerInteract : MonoBehaviour
     private Vector2 currentPlayerState = new(1, 1);
     public bool grabbedList = false;
 
+    [Header("Telescope")]
+    public GameObject playerCamera; // Assign your camera in the inspector
+    public Image binocularOverlay; // Assign your binocular image in the inspector
+
+    private float targetFOV;
+    private float zoomSpeed = 5f;
+    public float targetScale = 3f; // The starting scale of the overlay
+    private float minScale = 1.0f;    // The zoomed-in scale of the overlay
+
     private void Start()
     {
         interactStatusText.material = mobileMaterial;
         taskList.SetActive(false);
         parrot = GameObject.FindGameObjectWithTag("Parrot");
+
+        //For telescope
+        // Set the initial FOV to match the camera's current FOV
+        Camera cameraComponent = playerCamera.GetComponent<Camera>();
+        if (cameraComponent != null)
+        {
+            targetFOV = cameraComponent.fieldOfView;
+        }
+
+        // Initialize the scale of the binocular overlay
+        if (binocularOverlay != null)
+        {
+            binocularOverlay.rectTransform.localScale = new Vector3(targetScale, targetScale, 1f);
+        }
     }
 
     private void Update()
     {
+        // Check for state change inputs
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            currentPlayerState.x = 1; // Set state to handle hook interaction
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentPlayerState.x = 2; // Set state to handle telescope interaction
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            currentPlayerState.x = 3; // Set state to handle lantern interaction
+        }
+
         // Drop the fish if holding one
         if (currentPlayerState.y == 2 && Input.GetMouseButtonDown(0))
         {
@@ -36,11 +73,24 @@ public class PlayerInteract : MonoBehaviour
             return; // Exit early to avoid conflicting actions
         }
 
-        HandleInteraction();
+        // Handle interactions based on current state
+        switch ((int)currentPlayerState.x)
+        {
+            case 1:
+                HandleHookInteraction();
+                break;
+            case 2:
+                HandleTelescopeInteraction();
+                break;
+            case 3:
+                HandleLanternInteraction();
+                break;
+        }
     }
 
+
     // Handles player interactions with objects
-    private void HandleInteraction()
+    private void HandleHookInteraction()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 15f))
@@ -145,6 +195,49 @@ public class PlayerInteract : MonoBehaviour
             currentPlayerState = new(currentPlayerState.x, 1);
             currentFish = null; // Reset the reference to the current fish
         }
+    }
+
+    // Handle telescope interaction
+    private void HandleTelescopeInteraction()
+    {
+        interactStatusText.text = "Using telescope...";
+
+        HandleZoom();
+    }
+
+    private void HandleZoom()
+    {
+        Camera cameraComponent = playerCamera.GetComponent<Camera>();
+        if (cameraComponent != null)
+        {
+            // Set target FOV and overlay scale based on input
+            if (Input.GetMouseButton(0))
+            {
+                targetFOV = 30f; // Zoomed-in FOV
+                targetScale = minScale; // Zoomed-in scale
+            }
+            else
+            {
+                targetFOV = 70f; // Default FOV
+                targetScale = 4f; // Default scale
+            }
+
+            // Smoothly transition to the target FOV
+            cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
+
+            // Smoothly transition the binocular overlay scale
+            if (binocularOverlay != null)
+            {
+                float currentScale = Mathf.Lerp(binocularOverlay.rectTransform.localScale.x, targetScale, Time.deltaTime * zoomSpeed);
+                binocularOverlay.rectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
+            }
+        }
+    }
+
+    // Handle lantern interaction
+    private void HandleLanternInteraction()
+    {
+        interactStatusText.text = "Using lantern...";
     }
 
     public Vector2 GetPlayerState()

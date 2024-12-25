@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\DontDestroyOnLoadObject.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Chunky.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
+    <Compile Include="Assets\Day1CanvasManager.cs" />
     <Compile Include="Assets\Scripts\HookHandController.cs" />
     <Compile Include="Assets\Scripts\FishDestroyer.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />

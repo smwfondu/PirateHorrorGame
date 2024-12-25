@@ -364,6 +364,7 @@
 "Assets/Assets/Pixelation/Example/Scripts/PointLight.cs"
 "Assets/Assets/Pixelation/Scripts/Chunky.cs"
 "Assets/Assets/Pixelation/Scripts/Pixelation.cs"
+"Assets/Day1CanvasManager.cs"
 "Assets/PauseGame.cs"
 "Assets/Scripts/BinocularZoom.cs"
 "Assets/Scripts/BoatCameraBobbing.cs"
