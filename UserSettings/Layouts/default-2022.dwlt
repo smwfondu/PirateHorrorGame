@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 270
     height: 690
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 1170
     height: 690
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
@@ -275,8 +275,8 @@ MonoBehaviour:
     y: 0
     width: 480
     height: 939
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -418,23 +418,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 420affff
-      m_LastClickedID: -62910
-      m_ExpandedIDs: 562cffff80eeffff04fbffffe46100003c650000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 04fbffff2a600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Resume
-        m_OriginalName: Resume
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -55470
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -1115,10 +1115,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 704}
-    m_SelectedIDs: c8690000
-    m_LastClickedID: 27080
-    m_ExpandedIDs: 0000000006690000086900000a6900000c6900000e69000010690000126900001469000016690000186900001a6900001c6900001e69000020690000226900002469000026690000286900002a6900002c6900002e6900003069000032690000346900008a69000000ca9a3b
+    scrollPos: {x: 0, y: 608}
+    m_SelectedIDs: 2e6a0000
+    m_LastClickedID: 27182
+    m_ExpandedIDs: 0000000070690000726900007469000076690000786900007a6900007c6900007e69000080690000826900008469000086690000886900008a6900008c6900008e69000090690000926900009469000096690000986900009a6900009c6900009e69000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1146,7 +1146,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000006690000086900000a6900000c6900000e69000010690000126900001469000016690000186900001a6900001c6900001e69000020690000226900002469000026690000286900002a6900002c6900002e690000306900003269000034690000
+    m_ExpandedIDs: 0000000070690000726900007469000076690000786900007a6900007c6900007e69000080690000826900008469000086690000886900008a6900008c6900008e69000090690000926900009469000096690000986900009a6900009c6900009e690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1173,7 +1173,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000042620000b46c0000822a010014890000c68800007c6d000076670000e863000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1198,7 +1198,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 26}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 176
@@ -1272,7 +1272,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -62910
+  m_LastSelectedObjectID: 25132
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
