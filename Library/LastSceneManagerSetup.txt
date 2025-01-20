@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/The Cafeteria.unity
+- path: Assets/Scenes/Pre-Evaluation.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

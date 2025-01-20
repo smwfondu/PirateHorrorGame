@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BinocularZoom.cs" />
+    <Compile Include="Assets\Scripts\CameraLookScript.cs" />
     <Compile Include="Assets\Scripts\DontDestroyOnLoadObject.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Chunky.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Assets\Scripts\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\FishSpawner.cs" />
     <Compile Include="Assets\Scripts\FollowCursor.cs" />
+    <Compile Include="Assets\Scripts\RepDialogueMovement.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle1.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\PointLight.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
@@ -115,6 +117,7 @@
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\AnimWavesSpectrum.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\Resources\DynWavesSphereWaterInteraction.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\AnimWavesSetHeightToGeometry.shader" />
+    <None Include="Assets\Assets\CensorEffect\Readme.txt" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\Resources\FoamSplineGeometry.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\FlowAddFlowMap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
@@ -137,6 +140,7 @@
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\FlowFixedDirection.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Ocean.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\Resources\DepthSetBaseWaterHeightUsingGeometry.shader" />
+    <None Include="Assets\Assets\CensorEffect\Shaders\CensorShaderMaskedSmooth.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\DynWavesSphereWaterInteraction.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\FoamOverride.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\ShaderLibrary\Common.hlsl" />
@@ -161,6 +165,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Resources\Gerstner.compute" />
+    <None Include="Assets\Assets\CensorEffect\Shaders\CensorShaderMaskedCutout.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Helpers\BIRP\ScreenSpaceShadows.hlsl" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanInputs\Resources\ClipSurfaceRemoveArea.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Underwater\UnderwaterMaskHorizonShared.hlsl" />
@@ -192,6 +197,7 @@
     <None Include="Assets\Assets\Ocean\Crest\Shaders\OceanSurfaceAlpha.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Resources\ClearToBlack.compute" />
     <None Include="Assets\CameraPixelationShader.shader" />
+    <None Include="Assets\Assets\CensorEffect\Shaders\CensorShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\Assets\Ocean\Crest\Shaders\Helpers\BIRP\Core.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -1121,12 +1127,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
