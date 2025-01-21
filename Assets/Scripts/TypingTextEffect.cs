@@ -41,7 +41,5 @@ public class TypingTextEffect : MonoBehaviour
         loadingText.text = "";
 
         yield return new WaitForSeconds(2f);
-
-        SceneManager.LoadScene(PlayerPrefs.GetInt("day"));
     }
 }
