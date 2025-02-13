@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PlayerInteract : MonoBehaviour
 {
     [Header("Dependencies")]
-    [SerializeField] private DayNightCycle dayNightCycle;
     [SerializeField] private TextMeshProUGUI interactStatusText;
     [SerializeField] private GameObject taskList;
     [SerializeField] private Material mobileMaterial;
+    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private Image binocularOverlay;
 
     private GameObject parrot;
     private FishInteractable currentFish;
@@ -20,127 +20,88 @@ public class PlayerInteract : MonoBehaviour
     private Vector2 currentPlayerState = new(1, 1);
     public bool grabbedList = false;
 
-    [Header("Telescope")]
-    public GameObject playerCamera; // Assign your camera in the inspector
-    public Image binocularOverlay; // Assign your binocular image in the inspector
-
+    [Header("Telescope Settings")]
     private float targetFOV;
     private float zoomSpeed = 5f;
-    public float targetScale = 3f; // The starting scale of the overlay
-    private float minScale = 1.0f;    // The zoomed-in scale of the overlay
+    private float targetScale = 3f;
+    private float minScale = 1.0f;
+    private bool isZoomingOut = false;
 
     private void Start()
+    {
+        InitializeComponents();
+    }
+
+    private void Update()
+    {
+        HandleStateChange();
+        HandleInteractions();
+        if (isZoomingOut) SmoothZoomOut();
+    }
+
+    // Initialize scene components
+    private void InitializeComponents()
     {
         interactStatusText.material = mobileMaterial;
         taskList.SetActive(false);
         parrot = GameObject.FindGameObjectWithTag("Parrot");
 
-        //For telescope
-        // Set the initial FOV to match the camera's current FOV
         Camera cameraComponent = playerCamera.GetComponent<Camera>();
-        if (cameraComponent != null)
-        {
-            targetFOV = cameraComponent.fieldOfView;
-        }
-
-        // Initialize the scale of the binocular overlay
+        if (cameraComponent != null) targetFOV = cameraComponent.fieldOfView;
         if (binocularOverlay != null)
-        {
             binocularOverlay.rectTransform.localScale = new Vector3(targetScale, targetScale, 1f);
-        }
     }
 
-    private void Update()
+    // Handle changing the player's interaction state
+    private void HandleStateChange()
     {
-        // Check for state change inputs
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentPlayerState.x = 1; // Set state to handle hook interaction
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentPlayerState.x = 2; // Set state to handle telescope interaction
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentPlayerState.x = 3; // Set state to handle lantern interaction
-        }
+        int previousState = (int)currentPlayerState.x;
 
-        // Drop the fish if holding one
+        if (Input.GetKeyDown(KeyCode.Alpha1)) currentPlayerState.x = 1;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) currentPlayerState.x = 2;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) currentPlayerState.x = 3;
+
+        if (previousState == 2 && (int)currentPlayerState.x != 2) isZoomingOut = true;
+    }
+
+    // Handle different interactions based on the player's current state
+    private void HandleInteractions()
+    {
         if (currentPlayerState.y == 2 && Input.GetMouseButtonDown(0))
         {
             DropCurrentFish();
-            return; // Exit early to avoid conflicting actions
+            return;
         }
 
-        // Handle interactions based on current state
         switch ((int)currentPlayerState.x)
         {
-            case 1:
-                HandleHookInteraction();
-                break;
-            case 2:
-                HandleTelescopeInteraction();
-                break;
-            case 3:
-                HandleLanternInteraction();
-                break;
+            case 1: HandleHookInteraction(); break;
+            case 2: HandleTelescopeInteraction(); isZoomingOut = false; break;
+            case 3: HandleLanternInteraction(); break;
         }
     }
 
-
-    // Handles player interactions with objects
+    // Handles raycast-based interactions
     private void HandleHookInteraction()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 15f))
-        {
-            float distance = Vector3.Distance(transform.position, hit.point);
-
-            if (distance <= 3f) // Close-range interactions
-            {
-                if (hit.collider.CompareTag("Bed"))
-                {
-                    HandleBedInteraction();
-                }
-                else if (hit.collider.CompareTag("TaskList"))
-                {
-                    HandleTaskListInteraction(hit);
-                }
-                else if (hit.collider.CompareTag("Fish"))
-                {
-                    HandleFishInteraction(hit);
-                }
-                else
-                {
-                    interactStatusText.text = "";
-                }
-            }
-            else
-            {
-                interactStatusText.text = "";
-            }
-        }
-        else
+        if (!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 15f))
         {
             interactStatusText.text = "";
+            return;
         }
-    }
 
-    // Handles interaction with the bed
-    private void HandleBedInteraction()
-    {
-        if (dayNightCycle.GetNightStatus())
+        float distance = Vector3.Distance(transform.position, hit.point);
+        if (distance > 3f)
         {
-            interactStatusText.text = "Left click to sleep!";
-            if (Input.GetMouseButtonDown(0))
-            {
-                SceneManager.LoadScene(0);
-            }
+            interactStatusText.text = "";
+            return;
         }
-        else
+
+        switch (hit.collider.tag)
         {
-            interactStatusText.text = "Can't sleep now, too bright outside!";
+            case "TaskList": HandleTaskListInteraction(hit); break;
+            case "Fish": HandleFishInteraction(hit); break;
+            default: interactStatusText.text = ""; break;
         }
     }
 
@@ -148,90 +109,82 @@ public class PlayerInteract : MonoBehaviour
     private void HandleTaskListInteraction(RaycastHit hit)
     {
         interactStatusText.text = "Left click to grab";
-        if (Input.GetMouseButtonDown(0))
-        {
-            Destroy(hit.collider.gameObject);
-            taskList.SetActive(true);
-            if (parrot != null)
-            {
-                Animator parrotAnimator = parrot.GetComponent<Animator>();
-                if (parrotAnimator != null)
-                {
-                    parrotAnimator.SetTrigger("flyaway");
-                }
-            }
-            grabbedList = true;
-        }
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        Destroy(hit.collider.gameObject);
+        taskList.SetActive(true);
+        grabbedList = true;
+
+        if (parrot != null) parrot.GetComponent<Animator>()?.SetTrigger("flyaway");
     }
 
     // Handles interaction with a fish
     private void HandleFishInteraction(RaycastHit hit)
     {
-        if (currentPlayerState.y != 2)
-        {
-            interactStatusText.text = "Left click to Stab fish";
-            if (Input.GetMouseButtonDown(0))
-            {
-                FishInteractable fish = hit.collider.GetComponent<FishInteractable>();
-                if (fish != null)
-                {
-                    fish.PickUpFish(); // Pick up the fish
-                    currentPlayerState = new(currentPlayerState.x, 2);
-                    currentFish = fish; // Assign the fish to the currentFish variable
-                }
-            }
-        }
-        else
+        if (currentPlayerState.y == 2)
         {
             interactStatusText.text = "";
+            return;
         }
+
+        interactStatusText.text = "Left click to Stab fish";
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        currentFish = hit.collider.GetComponent<FishInteractable>();
+        if (currentFish == null) return;
+
+        currentFish.PickUpFish();
+        currentPlayerState.y = 2;
     }
 
+    // Drop the currently held fish
     public void DropCurrentFish()
     {
-        if (currentFish != null)
-        {
-            currentFish.DropFish(); // Call the fish's drop method
-            currentPlayerState = new(currentPlayerState.x, 1);
-            currentFish = null; // Reset the reference to the current fish
-        }
+        if (currentFish == null) return;
+
+        currentFish.DropFish();
+        currentPlayerState.y = 1;
+        currentFish = null;
     }
 
     // Handle telescope interaction
     private void HandleTelescopeInteraction()
     {
         interactStatusText.text = "Using telescope...";
-
         HandleZoom();
     }
 
+    // Handle zooming in and out smoothly
     private void HandleZoom()
     {
         Camera cameraComponent = playerCamera.GetComponent<Camera>();
-        if (cameraComponent != null)
+        if (cameraComponent == null) return;
+
+        targetFOV = Input.GetMouseButton(0) ? 30f : 70f;
+        targetScale = Input.GetMouseButton(0) ? minScale : 4f;
+
+        cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
+        if (binocularOverlay != null)
         {
-            // Set target FOV and overlay scale based on input
-            if (Input.GetMouseButton(0))
-            {
-                targetFOV = 30f; // Zoomed-in FOV
-                targetScale = minScale; // Zoomed-in scale
-            }
-            else
-            {
-                targetFOV = 70f; // Default FOV
-                targetScale = 4f; // Default scale
-            }
-
-            // Smoothly transition to the target FOV
-            cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
-
-            // Smoothly transition the binocular overlay scale
-            if (binocularOverlay != null)
-            {
-                float currentScale = Mathf.Lerp(binocularOverlay.rectTransform.localScale.x, targetScale, Time.deltaTime * zoomSpeed);
-                binocularOverlay.rectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
-            }
+            float currentScale = Mathf.Lerp(binocularOverlay.rectTransform.localScale.x, targetScale, Time.deltaTime * zoomSpeed);
+            binocularOverlay.rectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
         }
+    }
+
+    // Smoothly transition out of the zoomed-in telescope view
+    private void SmoothZoomOut()
+    {
+        Camera cameraComponent = playerCamera.GetComponent<Camera>();
+        if (cameraComponent == null) return;
+
+        cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, 70f, Time.deltaTime * zoomSpeed);
+        if (binocularOverlay == null) return;
+
+        float currentScale = Mathf.Lerp(binocularOverlay.rectTransform.localScale.x, 4f, Time.deltaTime * (zoomSpeed / 10));
+        binocularOverlay.rectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
+
+        if (Mathf.Abs(cameraComponent.fieldOfView - 70f) < 0.1f && Mathf.Abs(currentScale - 4f) < 0.1f)
+            isZoomingOut = false;
     }
 
     // Handle lantern interaction
@@ -240,13 +193,8 @@ public class PlayerInteract : MonoBehaviour
         interactStatusText.text = "Using lantern...";
     }
 
-    public Vector2 GetPlayerState()
-    {
-        return currentPlayerState;
-    }
-
-    public void SetPlayerState(Vector2 newPlayerState)
-    {
-        currentPlayerState = newPlayerState;
-    }
+    // Getters & Setters for player state
+    public Vector2 GetPlayerState() => currentPlayerState;
+    public bool GetIsZoomingOut() => isZoomingOut;
+    public void SetPlayerState(Vector2 newPlayerState) => currentPlayerState = newPlayerState;
 }

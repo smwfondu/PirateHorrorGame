@@ -5116,14 +5116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de0c02e241a57a478ce1648901574ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayNightCycle: {fileID: 1582326181}
   interactStatusText: {fileID: 5071253673647771404}
   taskList: {fileID: 112225761003992442}
   mobileMaterial: {fileID: 2100000, guid: 3b821cf75bbf8a54a80bce8d6d461f5c, type: 2}
-  grabbedList: 0
   playerCamera: {fileID: 1139125298}
   binocularOverlay: {fileID: 4465743121721975660}
-  targetScale: 4
+  grabbedList: 0
 --- !u!1 &1023315340
 GameObject:
   m_ObjectHideFlags: 0
@@ -8138,7 +8136,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 31
+  m_AdditionalShaderChannelsFlag: 7
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -8488,60 +8486,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578080807}
   m_Mesh: {fileID: -2018927335858034101, guid: 4fe7ec1d555ab494d836addf3c4b2c0f, type: 3}
---- !u!1 &1582326180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1582326182}
-  - component: {fileID: 1582326181}
-  m_Layer: 0
-  m_Name: DayNightCycle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1582326181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582326180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dca5fe9adac40b4784ef548416f69ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSkyMaterial: {fileID: 2100000, guid: 189cc8629af664342abc5224be746efc, type: 2}
-  morningSkybox: {fileID: 2100000, guid: 8fc56946a1b593c4d8e3e0e94483338e, type: 2}
-  daySkybox: {fileID: 2100000, guid: 9aa8ed67591432941bb76f12eb23ff91, type: 2}
-  sunsetSkybox: {fileID: 2100000, guid: 2441c79940171dc43b33badf9fe97828, type: 2}
-  nightSkybox: {fileID: 2100000, guid: 52fcefd712182d743a781fde12426775, type: 2}
-  sunFlare: {fileID: 12100000, guid: eceed015608c74aa4bf640cdf356a1fb, type: 2}
-  morningToDayDuration: 10
-  dayToSunsetDuration: 180
-  sunsetToNightDuration: 5
-  directionalLight: {fileID: 6203532490266863080}
---- !u!4 &1582326182
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582326180}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596988090
 GameObject:
   m_ObjectHideFlags: 0
@@ -21369,7 +21313,6 @@ SceneRoots:
   - {fileID: 4058600196895580392}
   - {fileID: 4058600196143725362}
   - {fileID: 1467452503207463706}
-  - {fileID: 1582326182}
   - {fileID: 1127307015}
   - {fileID: 1499618467}
   - {fileID: 1017430303}

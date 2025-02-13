@@ -34,22 +34,9 @@ public class RepDialogueMovement : MonoBehaviour
         dialogueText.text = dialogue[diaNum];
     }
 
-    private void Update()
+    public void PlayNextRepAnimation(string animName)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayNextDialogue();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            PlayNextRepAnimation();
-        }
-    }
-
-    public void PlayNextRepAnimation()
-    {
-        string randomAnimation = animationNames[animNum];
-        animator.Play(randomAnimation);
+        animator.Play(animName);
 
         animNum++;
         if(animNum == 5)

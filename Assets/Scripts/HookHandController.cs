@@ -35,7 +35,7 @@ public class HookHandController : MonoBehaviour
     void HandleSwinging()
     {
         // If left mouse button is pressed or held, trigger swinging
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0) && !pi.GetIsZoomingOut())
         {
             animator.SetBool("isSwinging", true);
             // Cancel inspecting if swinging starts
