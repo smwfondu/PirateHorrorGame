@@ -1,16 +1,17 @@
 Library/PlayerDataCache/Win64/Data/sharedassets0.assets.resS filter=lfs diff=lfs merge=lfs -text
-
 # Ensure all text files use LF
 * text=auto
-
 # Enforce LF for specific file types
 *.cs text eol=lf
 *.shader text eol=lf
 *.json text eol=lf
 *.meta text eol=lf
 *.txt text eol=lf
-
 # Binary files (no line ending conversion)
 *.png binary
 *.jpg binary
 *.exe binary
+C:/Users/dudea/Documents/GitHub/PirateHorrorGame/Library/PlayerDataCache/Win64/Data/sharedassets1.assets filter=lfs diff=lfs merge=lfs -text
+C:/Users/dudea/Documents/GitHub/PirateHorrorGame/Library/PlayerDataCache/Win64/Data/sharedassets1.assets.resS filter=lfs diff=lfs merge=lfs -text
+Library/PlayerDataCache/Win64/Data/sharedassets1.assets.resS filter=lfs diff=lfs merge=lfs -text
+*.resS filter=lfs diff=lfs merge=lfs -text
