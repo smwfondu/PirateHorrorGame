@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\HookHandController.cs" />
     <Compile Include="Assets\Scripts\FishDestroyer.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />
+    <Compile Include="Assets\PlayerCigaretteManager.cs" />
     <Compile Include="Assets\Scripts\CannonPolish.cs" />
     <Compile Include="Assets\Scripts\TimelineManager.cs" />
     <Compile Include="Assets\Scripts\Day1CanvasManager.cs" />

@@ -369,6 +369,7 @@
 "Assets/Assets/Pixelation/Scripts/Chunky.cs"
 "Assets/Assets/Pixelation/Scripts/Pixelation.cs"
 "Assets/OpeningSequence.cs"
+"Assets/PlayerCigaretteManager.cs"
 "Assets/Scripts/BinocularZoom.cs"
 "Assets/Scripts/BoatCameraBobbing.cs"
 "Assets/Scripts/CameraLookScript.cs"
