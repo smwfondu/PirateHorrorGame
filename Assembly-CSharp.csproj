@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\CargoChest.cs" />
     <Compile Include="Assets\Scripts\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\FishSpawner.cs" />
+    <Compile Include="Assets\MonitorManager.cs" />
     <Compile Include="Assets\Scripts\FollowCursor.cs" />
     <Compile Include="Assets\Scripts\RepDialogueMovement.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle1.cs" />

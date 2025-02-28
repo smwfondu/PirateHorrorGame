@@ -7,6 +7,7 @@ public class OpeningSequence : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
     public Image blackBG;
+    public MonitorManager mm;
     public AudioSource ambientAudio;
     public AudioSource repVoiceAudio; // Audio for the FronMind Rep
     public AudioSource finalAnimationSound;
@@ -63,6 +64,8 @@ public class OpeningSequence : MonoBehaviour
         yield return StartCoroutine(PlayDialogueSequence());
         finalAnimation.SetTrigger("FinalAnimationTrigger");
         finalAnimationSound.Play();
+        yield return new WaitForSeconds(3f);
+        mm.isActive = true;
     }
 
     private IEnumerator FadeAudioIn()

@@ -33,8 +33,9 @@ public class PlayerCigaretteManager : MonoBehaviour
         {
             holdTime += Time.deltaTime;
 
-            if (isAtMouth && idleSmoke.isPlaying)
+            if (isAtMouth)
             {
+                Debug.Log("Stopping Smoke");
                 idleSmoke.Stop();  // Remove idle smoke when drawing
             }
         }
@@ -79,9 +80,15 @@ public class PlayerCigaretteManager : MonoBehaviour
 
     void MoveCigaretteToMouth()
     {
+        // Smoothly move the cigarette towards the mouth position
         transform.position = Vector3.Lerp(transform.position, mouthPosition.position, Time.deltaTime * moveSpeed);
 
-        if (Vector3.Distance(transform.position, mouthPosition.position) < 0.1f)
+        // Smoothly rotate the cigarette towards the mouth rotation
+        transform.rotation = Quaternion.Lerp(transform.rotation, mouthPosition.rotation, Time.deltaTime * moveSpeed);
+
+        // Check if the cigarette is close enough to the target position & rotation
+        if (Vector3.Distance(transform.position, mouthPosition.position) < 0.1f &&
+            Quaternion.Angle(transform.rotation, mouthPosition.rotation) < 2f)
         {
             isAtMouth = true;
         }
@@ -89,13 +96,14 @@ public class PlayerCigaretteManager : MonoBehaviour
 
     void MoveCigaretteToTable()
     {
+        if (!idleSmoke.isPlaying)
+            idleSmoke.Play();
+
         transform.position = Vector3.Lerp(transform.position, tablePosition.position, Time.deltaTime * moveSpeed);
 
         if (Vector3.Distance(transform.position, tablePosition.position) < 0.1f)
         {
             isAtMouth = false;
-            if (!idleSmoke.isPlaying)
-                idleSmoke.Play();
         }
     }
 
