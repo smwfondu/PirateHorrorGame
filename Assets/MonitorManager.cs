@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MonitorManager : MonoBehaviour
 {
     public TextMeshProUGUI displayText;  // Assign in Inspector
+    public Image blackBG;
     public bool isActive = false;  // Controlled by another script
     private bool hasStarted = false;
+    private bool hasFinished = false;
+
+    private void Start()
+    {
+        displayText.text = "";
+    }
 
     void Update()
     {
@@ -17,16 +26,17 @@ public class MonitorManager : MonoBehaviour
             StartCoroutine(LoadingSequence());
         }
 
-        if (hasStarted && Input.GetKeyDown(KeyCode.Space))
+        if(hasFinished && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Game Start Triggered!");
+            blackBG.color = new Color(0, 0, 0, 1);
+            SceneManager.LoadScene(1);
         }
     }
 
     IEnumerator LoadingSequence()
     {
         displayText.text = "";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
 
         // Boot-up Sequence
         displayText.text = ">> INITIALIZING FRONMIND OS v3.27";
@@ -81,6 +91,17 @@ public class MonitorManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         // Final prompt
-        displayText.text = "PRESS SPACE TO START";
+        displayText.alignment = TextAlignmentOptions.Center;
+        displayText.alignment = TextAlignmentOptions.Midline;
+        displayText.fontSize = 20f;
+        hasFinished = true;
+
+        while(true)
+        {
+            displayText.text = "PRESS SPACE TO START";
+            yield return new WaitForSeconds(2.5f);
+            displayText.text = "";
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
