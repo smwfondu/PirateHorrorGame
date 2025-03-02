@@ -29,7 +29,7 @@ public class OpeningSequence : MonoBehaviour
 
     private string[] dialogueLines = {
         "R - We understand this is a difficult time for you.",
-        "C - I just…, I need the pain to stop. I can't keep living like this.",
+        "C - I just... I need the pain to stop. I can't keep living like this.",
         "R - That's exactly what we're here for. Our procedure is designed to relieve, to help you move forward past this.",
         "C - Will I forget everything?",
         "R - Only the memories that cause you distress. The ones tied to your incident.",
@@ -42,8 +42,8 @@ public class OpeningSequence : MonoBehaviour
         "R - It helps to keep the mind at ease while it recovers.",
         "C - And the quiz?",
         "R - Merely a formality to ensure the procedure has taken effect. You'll do fine.",
-        "C - Will I… will there be any chance of remembering?",
-        "R - Our success rate is perfect, Mr. *** and we intend to keep it that way.",
+        "C - Will I... will there be any chance of remembering?",
+        "R - Our success rate is perfect, Mr. Armstrong and we intend to keep it that way.",
     };
 
     private string[] dialogueLinesInUse = { };
@@ -105,9 +105,12 @@ public class OpeningSequence : MonoBehaviour
             {
                 PlayNextRepAnimation();
                 repVoiceAudio.Play();
+                yield return StartCoroutine(TypeDialogueRep(currentLine));
+            } 
+            else
+            {
+                yield return StartCoroutine(TypeDialogueMike(currentLine));
             }
-
-            yield return StartCoroutine(TypeDialogue(currentLine));
 
             repVoiceAudio.Stop(); // **Stop the Rep's voice when typing stops**
             yield return new WaitForSeconds(dialogueWaitTime + 1);
@@ -117,15 +120,43 @@ public class OpeningSequence : MonoBehaviour
         }
     }
 
-    private IEnumerator TypeDialogue(string line)
+    private IEnumerator TypeDialogueRep(string line)
     {
+        int numChar = 0;
         dialogueText.text = "";
         foreach (char letter in line.ToCharArray())
         {
             dialogueText.text += letter;
+
+            if (letter == '.' && numChar != line.Length - 1)
+            {
+                repVoiceAudio.Stop();
+                yield return new WaitForSeconds(dialogueSpeed * 10);
+                repVoiceAudio.Play();
+            }
+
             yield return new WaitForSeconds(dialogueSpeed);
+            numChar++;
         }
     }
+
+    private IEnumerator TypeDialogueMike(string line)
+    {
+        int numChar = 0;
+        dialogueText.text = "";
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+
+            if (letter == '.' && numChar != line.Length - 1)
+            {
+                yield return new WaitForSeconds(dialogueSpeed * 10);
+            }
+
+            yield return new WaitForSeconds(dialogueSpeed);
+            numChar++;
+        }
+    }   
 
     private void PlayNextRepAnimation()
     {
