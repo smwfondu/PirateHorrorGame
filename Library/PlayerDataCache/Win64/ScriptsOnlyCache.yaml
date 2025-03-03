@@ -20,6 +20,7 @@ ScriptsOnlyBuild:
     - PixelationEffect
     - PlayerInteract
     - ShipRock
+    - VisualOpeningSequence
     Crest.dll:
     - Crest.OceanRenderer
     - Crest.OceanWaveSpectrum
@@ -37,7 +38,9 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.PostProcessing.LensDistortion
     - UnityEngine.Rendering.PostProcessing.MotionBlur
     - UnityEngine.Rendering.PostProcessing.PostProcessLayer
+    - UnityEngine.Rendering.PostProcessing.PostProcessProfile
     - UnityEngine.Rendering.PostProcessing.PostProcessResources
+    - UnityEngine.Rendering.PostProcessing.PostProcessVolume
     - UnityEngine.Rendering.PostProcessing.ScreenSpaceReflections
     - UnityEngine.Rendering.PostProcessing.Vignette
     Unity.Rider.Editor.dll:
@@ -60,8 +63,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -80,9 +85,13 @@ ScriptsOnlyBuild:
     - Crest.OceanRenderer/DebugFields
     - Crest.ShapeWaves/DebugFields
     Unity.Postprocessing.Runtime:
+    - UnityEngine.Rendering.PostProcessing.BoolParameter
+    - UnityEngine.Rendering.PostProcessing.ColorParameter
     - UnityEngine.Rendering.PostProcessing.FastApproximateAntialiasing
+    - UnityEngine.Rendering.PostProcessing.FloatParameter
     - UnityEngine.Rendering.PostProcessing.Fog
     - UnityEngine.Rendering.PostProcessing.HistogramMonitor
+    - UnityEngine.Rendering.PostProcessing.KernelSizeParameter
     - UnityEngine.Rendering.PostProcessing.LightMeterMonitor
     - UnityEngine.Rendering.PostProcessing.PostProcessDebugLayer
     - UnityEngine.Rendering.PostProcessing.PostProcessDebugLayer/OverlaySettings
@@ -91,6 +100,7 @@ ScriptsOnlyBuild:
     - UnityEngine.Rendering.PostProcessing.PostProcessResources/Shaders
     - UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing
     - UnityEngine.Rendering.PostProcessing.TemporalAntialiasing
+    - UnityEngine.Rendering.PostProcessing.TextureParameter
     - UnityEngine.Rendering.PostProcessing.VectorscopeMonitor
     - UnityEngine.Rendering.PostProcessing.WaveformMonitor
     Unity.TextMeshPro:
@@ -229,15 +239,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7504}
     - Class: 114
-      Script: {instanceID: 8090}
+      Script: {instanceID: 8092}
     - Class: 114
-      Script: {instanceID: 8644}
+      Script: {instanceID: 8646}
     - Class: 114
-      Script: {instanceID: 8868}
+      Script: {instanceID: 8870}
     - Class: 114
-      Script: {instanceID: 9212}
+      Script: {instanceID: 9214}
     - Class: 114
-      Script: {instanceID: 9264}
+      Script: {instanceID: 9266}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -322,6 +332,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2562}
     - Class: 114
+      Script: {instanceID: 2802}
+    - Class: 114
       Script: {instanceID: 2988}
     - Class: 114
       Script: {instanceID: 3060}
@@ -332,15 +344,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4036}
     - Class: 114
+      Script: {instanceID: 4154}
+    - Class: 114
       Script: {instanceID: 4812}
     - Class: 114
       Script: {instanceID: 5100}
     - Class: 114
+      Script: {instanceID: 5408}
+    - Class: 114
+      Script: {instanceID: 5576}
+    - Class: 114
       Script: {instanceID: 5924}
+    - Class: 114
+      Script: {instanceID: 5976}
     - Class: 114
       Script: {instanceID: 6750}
     - Class: 114
       Script: {instanceID: 7130}
+    - Class: 114
+      Script: {instanceID: 7606}
+    - Class: 114
+      Script: {instanceID: 8416}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -562,7 +586,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 479799735f5fdd0760d1d5d30a556e1f
+      Hash: dea8a2490581b6d71ed3e7478721a05e
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MonitorManager
@@ -856,7 +880,7 @@ ScriptsOnlyBuild:
     className: CameraLookScript
   - hash:
       serializedVersion: 2
-      Hash: d34f1a093437c2ce7bd8a412369c6d14
+      Hash: bf0f8ec64392d09999ef7d13c9dde4ef
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: OpeningSequence
@@ -1618,6 +1642,12 @@ ScriptsOnlyBuild:
     className: UnityOnPointerEnterMessageListener
   - hash:
       serializedVersion: 2
+      Hash: e259779ff77c84dcf9879abaf90c1150
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: VisualOpeningSequence
+  - hash:
+      serializedVersion: 2
       Hash: f2305da2400dfe6f069770a1a63f0f7c
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -1904,12 +1934,6 @@ ScriptsOnlyBuild:
     assemblyName: Crest
     namespaceName: Crest
     className: OceanPlanarReflection
-  - hash:
-      serializedVersion: 2
-      Hash: 805dc79ac2d21dfd91419fdbfeea1b41
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerCigaretteManager
   - hash:
       serializedVersion: 2
       Hash: ff76cf6cf52b4db7b95af6ffadca9288

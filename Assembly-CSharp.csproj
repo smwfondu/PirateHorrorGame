@@ -69,15 +69,14 @@
     <Compile Include="Assets\Scripts\HookHandController.cs" />
     <Compile Include="Assets\Scripts\FishDestroyer.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />
-    <Compile Include="Assets\VisualOpeningSequence.cs" />
-    <Compile Include="Assets\PlayerCigaretteManager.cs" />
     <Compile Include="Assets\Scripts\CannonPolish.cs" />
+    <Compile Include="Assets\Assets\Pre-Evalution\Scripts\OpeningSequence.cs" />
     <Compile Include="Assets\Scripts\TimelineManager.cs" />
+    <Compile Include="Assets\Assets\Pre-Evalution\Scripts\VisualOpeningSequence.cs" />
     <Compile Include="Assets\Scripts\Day1CanvasManager.cs" />
     <Compile Include="Assets\Scripts\FloatingEffect.cs" />
     <Compile Include="Assets\Scripts\FishInteractable.cs" />
     <Compile Include="Assets\Scripts\ParrotController.cs" />
-    <Compile Include="Assets\OpeningSequence.cs" />
     <Compile Include="Assets\Scripts\TypingTextEffect.cs" />
     <Compile Include="Assets\Scripts\BoatCameraBobbing.cs" />
     <Compile Include="Assets\Scripts\PauseGame.cs" />
@@ -86,7 +85,6 @@
     <Compile Include="Assets\Scripts\CargoChest.cs" />
     <Compile Include="Assets\Scripts\PlayerInteract.cs" />
     <Compile Include="Assets\Scripts\FishSpawner.cs" />
-    <Compile Include="Assets\MonitorManager.cs" />
     <Compile Include="Assets\Scripts\FollowCursor.cs" />
     <Compile Include="Assets\Scripts\RepDialogueMovement.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle1.cs" />
@@ -97,6 +95,7 @@
     <Compile Include="Assets\Assets\Pixelation\Scripts\Pixelation.cs" />
     <Compile Include="Assets\Scripts\TaskManager.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
+    <Compile Include="Assets\Assets\Pre-Evalution\Scripts\MonitorManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
