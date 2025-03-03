@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class OpeningSequence : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
-    public Image blackBG;
     public MonitorManager mm;
-    public AudioSource ambientAudio;
     public AudioSource repVoiceAudio; // Audio for the FronMind Rep
     public AudioSource finalAnimationSound;
     public float audioFadeDuration = 3.0f;
@@ -27,23 +25,18 @@ public class OpeningSequence : MonoBehaviour
         "C - Test line 2",
     };
 
-    private string[] dialogueLines = {
-        "R - We understand this is a difficult time for you.",
-        "C - I just... I need the pain to stop. I can't keep living like this.",
-        "R - That's exactly what we're here for. Our procedure is designed to relieve, to help you move forward past this.",
-        "C - Will I forget everything?",
-        "R - Only the memories that cause you distress. The ones tied to your incident.",
-        "C - And what happens after? How do I... function?",
-        "R - You'll go through a short recovery period.",
-        "R - During that time, you'll engage in simple, structured activities designed to help your mind adjust.",
-        "R - It's a form of cognitive therapy, very effective.",
-        "C - Simple activities?",
-        "R - Think of it as a simulation of your mind, something you might have dreamt of as a child.",
-        "R - It helps to keep the mind at ease while it recovers.",
-        "C - And the quiz?",
-        "R - Merely a formality to ensure the procedure has taken effect. You'll do fine.",
-        "C - Will I... will there be any chance of remembering?",
-        "R - Our success rate is perfect, Mr. Armstrong and we intend to keep it that way.",
+    private readonly string[] dialogueLines = {
+        "R - Welcome back, Mr. Armstrong. How do you feel?",
+        "M - Who are you? Where am I?",
+        "R - Take your time. No need to rush for answers. You’ve just undergone the procedure. Some disorientation is normal.",
+        "M - The procedure… It’s done?",
+        "R - Yes. It went exactly as planned. How are you feeling?",
+        "M - I… don’t know. Strange. Heavy.",
+        "R - That will pass. Your mind is still adjusting.",
+        "M - …What did you take?",
+        "R - Only what was necessary. Know that you may notice gaps. That’s expected. But you are free now, Mr. Armstrong. No more pain.",
+        "M - I don’t feel so good.",
+        "R - Recovery takes time. We will start you off today with something easy. Please, begin when you are ready."
     };
 
     private string[] dialogueLinesInUse = { };
@@ -52,44 +45,20 @@ public class OpeningSequence : MonoBehaviour
     {
         if(testingMode) { dialogueLinesInUse = testDialogueLines; }
         else { dialogueLinesInUse = dialogueLines; }
-        
-        blackBG.color = new Color(0, 0, 0, 1);
+    }
+
+    public void StartDialgoue()
+    {
         StartCoroutine(OpeningSequenceRoutine());
     }
 
     private IEnumerator OpeningSequenceRoutine()
     {
-        yield return StartCoroutine(FadeAudioIn());
-        yield return StartCoroutine(FadeLightIn());
         yield return StartCoroutine(PlayDialogueSequence());
         finalAnimation.SetTrigger("FinalAnimationTrigger");
         finalAnimationSound.Play();
         yield return new WaitForSeconds(3f);
         mm.isActive = true;
-    }
-
-    private IEnumerator FadeAudioIn()
-    {
-        float timer = 0f;
-        while (timer < audioFadeDuration)
-        {
-            ambientAudio.volume = Mathf.Lerp(0, 0.3f, timer / audioFadeDuration);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        ambientAudio.volume = 0.3f;
-    }
-
-    private IEnumerator FadeLightIn()
-    {
-        float timer = 0f;
-        while (timer < audioFadeDuration)
-        {
-            blackBG.color = new Color(0, 0, 0, Mathf.Lerp(1, 0, timer / audioFadeDuration));
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        blackBG.color = new Color(0, 0, 0, 0);
     }
 
     private IEnumerator PlayDialogueSequence()

@@ -28,6 +28,13 @@ public class MonitorManager : MonoBehaviour
 
         if(hasFinished && Input.GetKeyDown(KeyCode.Space))
         {
+            AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>(); // Find all AudioSources in the scene
+
+            foreach (AudioSource audioSource in allAudioSources)
+            {
+                audioSource.Stop(); // Stop each one
+            }
+
             blackBG.color = new Color(0, 0, 0, 1);
             SceneManager.LoadScene(1);
         }

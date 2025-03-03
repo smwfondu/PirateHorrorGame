@@ -13,6 +13,7 @@ ScriptsOnlyBuild:
     - FishSpawner
     - FloatingEffect
     - HookHandController
+    - MonitorManager
     - OpeningSequence
     - ParrotController
     - PauseMenuAnimator
@@ -59,10 +60,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -186,59 +185,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2802}
     - Class: 114
-      Script: {instanceID: 3058}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 3290}
+      Script: {instanceID: 3292}
     - Class: 114
-      Script: {instanceID: 3464}
+      Script: {instanceID: 3466}
     - Class: 114
-      Script: {instanceID: 3646}
+      Script: {instanceID: 3648}
     - Class: 114
-      Script: {instanceID: 3748}
+      Script: {instanceID: 3750}
     - Class: 114
-      Script: {instanceID: 4238}
+      Script: {instanceID: 4240}
     - Class: 114
-      Script: {instanceID: 4448}
+      Script: {instanceID: 4450}
     - Class: 114
-      Script: {instanceID: 5280}
+      Script: {instanceID: 5282}
     - Class: 114
-      Script: {instanceID: 5574}
+      Script: {instanceID: 5576}
     - Class: 114
-      Script: {instanceID: 5794}
+      Script: {instanceID: 5796}
     - Class: 114
-      Script: {instanceID: 5864}
+      Script: {instanceID: 5866}
     - Class: 114
-      Script: {instanceID: 5904}
+      Script: {instanceID: 5906}
     - Class: 114
-      Script: {instanceID: 5922}
+      Script: {instanceID: 5924}
     - Class: 114
-      Script: {instanceID: 6378}
+      Script: {instanceID: 6380}
     - Class: 114
-      Script: {instanceID: 6518}
+      Script: {instanceID: 6520}
     - Class: 114
-      Script: {instanceID: 6714}
+      Script: {instanceID: 6716}
     - Class: 114
-      Script: {instanceID: 6742}
+      Script: {instanceID: 6744}
     - Class: 114
-      Script: {instanceID: 6748}
+      Script: {instanceID: 6750}
     - Class: 114
-      Script: {instanceID: 6894}
+      Script: {instanceID: 6896}
     - Class: 114
-      Script: {instanceID: 6962}
+      Script: {instanceID: 6964}
     - Class: 114
-      Script: {instanceID: 7128}
+      Script: {instanceID: 7130}
     - Class: 114
-      Script: {instanceID: 7502}
+      Script: {instanceID: 7504}
     - Class: 114
-      Script: {instanceID: 8088}
+      Script: {instanceID: 8090}
     - Class: 114
-      Script: {instanceID: 8642}
+      Script: {instanceID: 8644}
     - Class: 114
-      Script: {instanceID: 8866}
+      Script: {instanceID: 8868}
     - Class: 114
-      Script: {instanceID: 9208}
+      Script: {instanceID: 9212}
     - Class: 114
-      Script: {instanceID: 9260}
+      Script: {instanceID: 9264}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -294,6 +293,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 72
       Script: {instanceID: 0}
     - Class: 74
@@ -321,23 +322,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2562}
     - Class: 114
-      Script: {instanceID: 3058}
+      Script: {instanceID: 2988}
     - Class: 114
-      Script: {instanceID: 3290}
+      Script: {instanceID: 3060}
     - Class: 114
-      Script: {instanceID: 4020}
+      Script: {instanceID: 3292}
     - Class: 114
-      Script: {instanceID: 4034}
+      Script: {instanceID: 4022}
     - Class: 114
-      Script: {instanceID: 4810}
+      Script: {instanceID: 4036}
     - Class: 114
-      Script: {instanceID: 5098}
+      Script: {instanceID: 4812}
     - Class: 114
-      Script: {instanceID: 5922}
+      Script: {instanceID: 5100}
     - Class: 114
-      Script: {instanceID: 6748}
+      Script: {instanceID: 5924}
     - Class: 114
-      Script: {instanceID: 7128}
+      Script: {instanceID: 6750}
+    - Class: 114
+      Script: {instanceID: 7130}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -557,6 +560,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 479799735f5fdd0760d1d5d30a556e1f
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MonitorManager
   - hash:
       serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
@@ -847,7 +856,7 @@ ScriptsOnlyBuild:
     className: CameraLookScript
   - hash:
       serializedVersion: 2
-      Hash: e5a947bd1fa78105aa10f9c6805bcb98
+      Hash: d34f1a093437c2ce7bd8a412369c6d14
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: OpeningSequence
@@ -1895,6 +1904,12 @@ ScriptsOnlyBuild:
     assemblyName: Crest
     namespaceName: Crest
     className: OceanPlanarReflection
+  - hash:
+      serializedVersion: 2
+      Hash: 805dc79ac2d21dfd91419fdbfeea1b41
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerCigaretteManager
   - hash:
       serializedVersion: 2
       Hash: ff76cf6cf52b4db7b95af6ffadca9288
