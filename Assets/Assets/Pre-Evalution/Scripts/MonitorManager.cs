@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class MonitorManager : MonoBehaviour
 
     [Header("Computer Sounds")]
     public AudioSource bootUpSound;
+    public AudioSource blipSound;
 
     private bool hasStarted = false;
     private bool hasFinished = false;
@@ -60,10 +62,11 @@ public class MonitorManager : MonoBehaviour
         if (isActive && !hasStarted)
         {
             hasStarted = true;
+            displayText.text = "";
             StartCoroutine(LoadingSequence());
         }
 
-        if(hasFinished && Input.GetKeyDown(KeyCode.Space))
+        if (hasFinished && Input.GetKeyDown(KeyCode.Space))
         {
             AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>(); // Find all AudioSources in the scene
 
@@ -79,58 +82,67 @@ public class MonitorManager : MonoBehaviour
 
     IEnumerator LoadingSequence()
     {
-        displayText.text = "";
+        Debug.Log("loading sequence starts");
         yield return new WaitForSeconds(1f);
 
+        Debug.Log("bootupSound starts");
         bootUpSound.Play();
         yield return new WaitForSeconds(1f);
 
-        // Boot-up sequence
-        displayText.text = ">> INITIALIZING FRONMIND OS v3.27\n";
+        // Use StringBuilder to improve performance
+        StringBuilder sb = new StringBuilder();
+
+        sb.AppendLine(">> INITIALIZING FRONMIND OS v3.27");
         yield return new WaitForSeconds(0.5f);
-        displayText.text += ">> SYSTEM DIAGNOSTICS...\n";
+        sb.AppendLine(">> SYSTEM DIAGNOSTICS...");
         yield return new WaitForSeconds(0.2f);
 
         foreach (string check in systemChecks)
         {
-            displayText.text += check + "\n";
+            sb.AppendLine(check);
+            displayText.text = sb.ToString();
             yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
         }
 
         yield return new WaitForSeconds(0.5f);
-        displayText.text = "\n>> CORE SYSTEMS BOOTING...\n";
+        sb.Clear(); // Reset text efficiently
+        sb.AppendLine(">> CORE SYSTEMS BOOTING...");
         yield return new WaitForSeconds(0.3f);
 
         foreach (string process in loadingProcesses)
         {
-            displayText.text += ">> " + process + "... ";
+            sb.Append($">> {process}... ");
             yield return new WaitForSeconds(0.2f);
-            displayText.text += "[ OK ]\n";
+            sb.AppendLine("[ OK ]");
+            displayText.text = sb.ToString();
             yield return new WaitForSeconds(Random.Range(0.1f, 0.25f));
         }
 
         yield return new WaitForSeconds(0.5f);
-        displayText.text = "\n>> LOADING SECURITY PROTOCOLS... ";
+        sb.Clear();
+        sb.Append("\n>> LOADING SECURITY PROTOCOLS... ");
         yield return new WaitForSeconds(0.3f);
-        displayText.text += "AUTHORIZED\n";
+        sb.AppendLine("AUTHORIZED");
         yield return new WaitForSeconds(0.5f);
 
-        displayText.text += "\n>> ESTABLISHING FRONMIND NETWORK CONNECTION...\n";
+        sb.AppendLine("\n>> ESTABLISHING FRONMIND NETWORK CONNECTION...");
         yield return new WaitForSeconds(0.5f);
 
         foreach (string syncStep in networkSync)
         {
-            displayText.text += syncStep + "\n";
+            sb.AppendLine(syncStep);
+            displayText.text = sb.ToString();
             yield return new WaitForSeconds(0.3f);
         }
 
         yield return new WaitForSeconds(1f);
-        displayText.text = "\n>> SYSTEM ONLINE - FRONMIND INTERFACE READY\n";
+        sb.AppendLine("\n>> SYSTEM ONLINE - FRONMIND INTERFACE READY");
+        displayText.text = sb.ToString();
         yield return new WaitForSeconds(1.5f);
 
         // Simulate a blank screen transition
         displayText.text = "";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         // Final prompt
         displayText.alignment = TextAlignmentOptions.Center;
@@ -140,10 +152,11 @@ public class MonitorManager : MonoBehaviour
 
         while (true)
         {
+            blipSound.Play();
             displayText.text = "PRESS SPACE TO START SIMULATION";
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSecondsRealtime(2f);
             displayText.text = "";
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSecondsRealtime(0.4f);
         }
     }
 }

@@ -8,7 +8,6 @@ public class PlayerInteract : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private TextMeshProUGUI interactStatusText;
-    [SerializeField] private GameObject taskList;
     [SerializeField] private Material mobileMaterial;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private Image binocularOverlay;
@@ -43,7 +42,6 @@ public class PlayerInteract : MonoBehaviour
     private void InitializeComponents()
     {
         interactStatusText.material = mobileMaterial;
-        taskList.SetActive(false);
         parrot = GameObject.FindGameObjectWithTag("Parrot");
 
         Camera cameraComponent = playerCamera.GetComponent<Camera>();
@@ -112,7 +110,6 @@ public class PlayerInteract : MonoBehaviour
         if (!Input.GetMouseButtonDown(0)) return;
 
         Destroy(hit.collider.gameObject);
-        taskList.SetActive(true);
         grabbedList = true;
 
         if (parrot != null) parrot.GetComponent<Animator>()?.SetTrigger("flyaway");
@@ -160,7 +157,7 @@ public class PlayerInteract : MonoBehaviour
         Camera cameraComponent = playerCamera.GetComponent<Camera>();
         if (cameraComponent == null) return;
 
-        targetFOV = Input.GetMouseButton(0) ? 30f : 70f;
+        targetFOV = Input.GetMouseButton(0) ? 30f : 80f;
         targetScale = Input.GetMouseButton(0) ? minScale : 4f;
 
         cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);

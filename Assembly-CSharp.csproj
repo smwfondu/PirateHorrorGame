@@ -61,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerInteract1.cs" />
-    <Compile Include="Assets\Scripts\BinocularZoom.cs" />
     <Compile Include="Assets\Scripts\CameraLookScript.cs" />
     <Compile Include="Assets\Scripts\DontDestroyOnLoadObject.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Chunky.cs" />

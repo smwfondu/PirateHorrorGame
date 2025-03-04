@@ -60,6 +60,7 @@ public class OpeningSequence : MonoBehaviour
         finalAnimationSound.Play();
         distortionSound.Stop();
         yield return new WaitForSeconds(3f);
+        Debug.Log("mm is activated.");
         mm.isActive = true;
     }
 

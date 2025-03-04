@@ -25,8 +25,6 @@ public class VisualOpeningSequence : MonoBehaviour
 
     void Start()
     {
-        // Ensure white screen is fully visible at start
-        whiteScreen.gameObject.SetActive(true);
         whiteScreen.color = new Color(0, 0, 0, 1);
 
         if (postProcessingVolume.profile != null)
@@ -65,8 +63,7 @@ public class VisualOpeningSequence : MonoBehaviour
         // Fade out the white screen
         while (timer < fadeDuration)
         {
-            whiteScreen.color = new Color(Mathf.Lerp(255f, 0f, timer / fadeDuration), Mathf.Lerp(255f, 0f, timer / fadeDuration), 
-                Mathf.Lerp(255f, 0f, timer / fadeDuration), Mathf.Lerp(1f, 0f, timer / fadeDuration));
+            whiteScreen.color = new Color(219, 221, 198, Mathf.Lerp(1f, 0f, timer / fadeDuration));
             timer += Time.deltaTime;
             yield return null;
         }
