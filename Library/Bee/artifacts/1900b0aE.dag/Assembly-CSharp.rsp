@@ -398,6 +398,7 @@
 "Assets/Scripts/TaskManager.cs"
 "Assets/Scripts/TimelineManager.cs"
 "Assets/Scripts/TypingTextEffect.cs"
+"Assets/TaskPaperManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+

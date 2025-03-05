@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\PixelationEffect.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\Plane.cs" />
+    <Compile Include="Assets\TaskPaperManager.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Pixelation.cs" />
     <Compile Include="Assets\Scripts\TaskManager.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
