@@ -321,7 +321,6 @@
 "Assets/Assets/Pre-Evalution/Scripts/MonitorManager.cs"
 "Assets/Assets/Pre-Evalution/Scripts/OpeningSequence.cs"
 "Assets/Assets/Pre-Evalution/Scripts/VisualOpeningSequence.cs"
-"Assets/Scripts/BinocularZoom.cs"
 "Assets/Scripts/BoatCameraBobbing.cs"
 "Assets/Scripts/CameraLookScript.cs"
 "Assets/Scripts/CannonPolish.cs"
@@ -349,6 +348,7 @@
 "Assets/Scripts/TaskManager.cs"
 "Assets/Scripts/TimelineManager.cs"
 "Assets/Scripts/TypingTextEffect.cs"
+"Assets/TaskPaperManager.cs"
 -langversion:9.0
 /deterministic
 /optimize+

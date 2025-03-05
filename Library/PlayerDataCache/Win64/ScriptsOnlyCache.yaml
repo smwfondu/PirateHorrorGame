@@ -11,15 +11,14 @@ ScriptsOnlyBuild:
     - FishDestroyer
     - FishInteractable
     - FishSpawner
-    - FloatingEffect
     - HookHandController
     - MonitorManager
     - OpeningSequence
     - ParrotController
-    - PauseMenuAnimator
     - PixelationEffect
     - PlayerInteract
     - ShipRock
+    - TaskPaperManager
     - VisualOpeningSequence
     Crest.dll:
     - Crest.OceanRenderer
@@ -55,6 +54,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
     Unity.Timeline.Editor.dll:
     - TimelinePreferences
@@ -63,10 +63,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -75,11 +73,9 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
-    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.RawImage
   serializedClasses:
     Crest:
     - Crest.OceanRenderer/DebugFields
@@ -119,25 +115,15 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Style
     - TMPro.VertexGradient
     UnityEngine.CoreModule:
-    - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
-    - UnityEngine.Events.PersistentListenerMode
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
-    - UnityEngine.UI.AnimationTriggers
-    - UnityEngine.UI.Button/ButtonClickedEvent
-    - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-    - UnityEngine.UI.Navigation
-    - UnityEngine.UI.SpriteState
-  methodsToPreserve:
-  - assembly: Assembly-CSharp
-    fullTypeName: PauseMenuAnimator
-    methodName: Resume
+  methodsToPreserve: []
   sceneClasses:
     Assets/Scenes/Day 1.unity:
     - Class: 1
@@ -189,8 +175,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1898}
     - Class: 114
-      Script: {instanceID: 2712}
-    - Class: 114
       Script: {instanceID: 2750}
     - Class: 114
       Script: {instanceID: 2802}
@@ -201,21 +185,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3466}
     - Class: 114
-      Script: {instanceID: 3648}
-    - Class: 114
       Script: {instanceID: 3750}
+    - Class: 114
+      Script: {instanceID: 4142}
     - Class: 114
       Script: {instanceID: 4240}
     - Class: 114
-      Script: {instanceID: 4450}
+      Script: {instanceID: 4378}
     - Class: 114
-      Script: {instanceID: 5282}
+      Script: {instanceID: 4452}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 5284}
+    - Class: 114
+      Script: {instanceID: 5578}
     - Class: 114
       Script: {instanceID: 5796}
-    - Class: 114
-      Script: {instanceID: 5866}
     - Class: 114
       Script: {instanceID: 5906}
     - Class: 114
@@ -243,11 +227,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8646}
     - Class: 114
-      Script: {instanceID: 8870}
+      Script: {instanceID: 9212}
     - Class: 114
-      Script: {instanceID: 9214}
-    - Class: 114
-      Script: {instanceID: 9266}
+      Script: {instanceID: 9264}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 121
@@ -277,8 +259,6 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
-      Script: {instanceID: 0}
-    - Class: 225
       Script: {instanceID: 0}
     - Class: 850595691
       Script: {instanceID: 0}
@@ -346,13 +326,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4154}
     - Class: 114
-      Script: {instanceID: 4812}
+      Script: {instanceID: 4814}
     - Class: 114
-      Script: {instanceID: 5100}
+      Script: {instanceID: 5102}
     - Class: 114
-      Script: {instanceID: 5408}
+      Script: {instanceID: 5410}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 5578}
     - Class: 114
       Script: {instanceID: 5924}
     - Class: 114
@@ -586,7 +566,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: dea8a2490581b6d71ed3e7478721a05e
+      Hash: bafa0c14d81c051e91c158a6a2aa98a9
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: MonitorManager
@@ -784,7 +764,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 1d6448268968034883fd201d2e7866b8
+      Hash: 132a3a0feaa33d007dbb8aed0a658096
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerInteract
@@ -950,6 +930,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Flow
     namespaceName: Unity.VisualScripting
     className: ScriptGraphAsset
+  - hash:
+      serializedVersion: 2
+      Hash: cd84ced2e5094b7527ca66c2867eae36
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TaskPaperManager
   - hash:
       serializedVersion: 2
       Hash: fb79e95da8891fc7ac6c36ca6967af23
@@ -1192,12 +1178,6 @@ ScriptsOnlyBuild:
     className: UnityOnEndDragMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 62d8e47b29d9cb86fe0db88ed1c1faad
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: BinocularZoom
-  - hash:
-      serializedVersion: 2
       Hash: 76aa43cc6adae8454a66255a8113266d
     assemblyName: Unity.Postprocessing.Runtime
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -1306,7 +1286,7 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 665831ba35eef64f57376313fd362cf0
+      Hash: 0f911a8914f2b8569ba70f3ac249b5f9
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Day1CanvasManager

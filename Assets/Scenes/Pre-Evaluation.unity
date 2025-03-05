@@ -1404,7 +1404,7 @@ MonoBehaviour:
   - 3
   - 4
   - 5
-  testingMode: 1
+  testingMode: 0
 --- !u!95 &858025149
 Animator:
   serializedVersion: 5

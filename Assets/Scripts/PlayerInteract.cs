@@ -54,12 +54,38 @@ public class PlayerInteract : MonoBehaviour
     private void HandleStateChange()
     {
         int previousState = (int)currentPlayerState.x;
+        int newState = previousState;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) currentPlayerState.x = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) currentPlayerState.x = 2;
-        else if (Input.GetKeyDown(KeyCode.Alpha3)) currentPlayerState.x = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha1)) newState = 1;
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) newState = 2;
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) newState = 3;
 
-        if (previousState == 2 && (int)currentPlayerState.x != 2) isZoomingOut = true;
+        // Only update if state actually changes
+        if (previousState != newState)
+        {
+            currentPlayerState.x = newState;
+
+            // If transitioning away from telescope state, trigger smooth zoom out
+            if (previousState == 2 && newState != 2)
+                isZoomingOut = true;
+
+            // Trigger animations based on the new state
+            TriggerStateAnimations(newState);
+        }
+    }
+
+    // Function to handle animation triggers when state changes
+    private void TriggerStateAnimations(int state)
+    {
+        Animator animator = GetComponent<Animator>();
+        if (animator == null) return;
+
+        switch (state)
+        {
+            case 1: animator.SetTrigger("EquipHook"); break;
+            case 2: animator.SetTrigger("EquipTelescope"); break;
+            case 3: animator.SetTrigger("EquipLantern"); break;
+        }
     }
 
     // Handle different interactions based on the player's current state
@@ -174,13 +200,13 @@ public class PlayerInteract : MonoBehaviour
         Camera cameraComponent = playerCamera.GetComponent<Camera>();
         if (cameraComponent == null) return;
 
-        cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, 70f, Time.deltaTime * zoomSpeed);
+        cameraComponent.fieldOfView = Mathf.Lerp(cameraComponent.fieldOfView, 80f, Time.deltaTime * zoomSpeed);
         if (binocularOverlay == null) return;
 
         float currentScale = Mathf.Lerp(binocularOverlay.rectTransform.localScale.x, 4f, Time.deltaTime * (zoomSpeed / 10));
         binocularOverlay.rectTransform.localScale = new Vector3(currentScale, currentScale, 1f);
 
-        if (Mathf.Abs(cameraComponent.fieldOfView - 70f) < 0.1f && Mathf.Abs(currentScale - 4f) < 0.1f)
+        if (Mathf.Abs(cameraComponent.fieldOfView - 80f) < 0.1f && Mathf.Abs(currentScale - 4f) < 0.1f)
             isZoomingOut = false;
     }
 
