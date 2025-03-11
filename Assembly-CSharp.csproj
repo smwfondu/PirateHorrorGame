@@ -60,11 +60,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.44f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\StoreRumTaskManager.cs" />
     <Compile Include="Assets\Scripts\PlayerInteract1.cs" />
     <Compile Include="Assets\Scripts\CameraLookScript.cs" />
     <Compile Include="Assets\Scripts\DontDestroyOnLoadObject.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Chunky.cs" />
+    <Compile Include="Assets\RumBottleInteractable.cs" />
+    <Compile Include="Assets\CannonTaskManager.cs" />
     <Compile Include="Assets\Scripts\DayNightCycle.cs" />
+    <Compile Include="Assets\ShipAudioManager.cs" />
     <Compile Include="Assets\Scripts\HookHandController.cs" />
     <Compile Include="Assets\Scripts\FishDestroyer.cs" />
     <Compile Include="Assets\Assets\Pixelation\Example\Scripts\ImageEffectBase.cs" />
@@ -94,6 +98,7 @@
     <Compile Include="Assets\TaskPaperManager.cs" />
     <Compile Include="Assets\Assets\Pixelation\Scripts\Pixelation.cs" />
     <Compile Include="Assets\Scripts\TaskManager.cs" />
+    <Compile Include="Assets\RumStorageZone.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Assets\Pre-Evalution\Scripts\MonitorManager.cs" />
   </ItemGroup>

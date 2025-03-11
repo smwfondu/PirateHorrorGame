@@ -11,13 +11,14 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private Material mobileMaterial;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private Image binocularOverlay;
+    [SerializeField] private TaskPaperManager playerTaskPaper;
 
     private GameObject parrot;
     private FishInteractable currentFish;
+    private RumBottleInteractable currentRumBottle;
 
     [Header("Player States")]
     private Vector2 currentPlayerState = new(1, 1);
-    public bool grabbedList = false;
 
     [Header("Telescope Settings")]
     private float targetFOV;
@@ -69,6 +70,12 @@ public class PlayerInteract : MonoBehaviour
             if (previousState == 2 && newState != 2)
                 isZoomingOut = true;
 
+            if (previousState == 1 && newState != 1 && currentPlayerState.y == 2)
+                DropCurrentFish();
+
+            if (previousState == 1 && newState != 1 && currentPlayerState.y == 3)
+                DropCurrentRum();
+
             // Trigger animations based on the new state
             TriggerStateAnimations(newState);
         }
@@ -94,6 +101,12 @@ public class PlayerInteract : MonoBehaviour
         if (currentPlayerState.y == 2 && Input.GetMouseButtonDown(0))
         {
             DropCurrentFish();
+            return;
+        } 
+        else if (currentPlayerState.y == 3 && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Drop Rum Called!");
+            DropCurrentRum();
             return;
         }
 
@@ -125,6 +138,7 @@ public class PlayerInteract : MonoBehaviour
         {
             case "TaskList": HandleTaskListInteraction(hit); break;
             case "Fish": HandleFishInteraction(hit); break;
+            case "RumBottle": HandleRumInteraction(hit); break;
             default: interactStatusText.text = ""; break;
         }
     }
@@ -136,15 +150,34 @@ public class PlayerInteract : MonoBehaviour
         if (!Input.GetMouseButtonDown(0)) return;
 
         Destroy(hit.collider.gameObject);
-        grabbedList = true;
+        playerTaskPaper.SetGrabbedList(true);
 
         if (parrot != null) parrot.GetComponent<Animator>()?.SetTrigger("flyaway");
     }
 
     // Handles interaction with a fish
+    private void HandleRumInteraction(RaycastHit hit)
+    {
+        if (currentPlayerState.y == 3 || currentPlayerState.y == 2)
+        {
+            interactStatusText.text = "";
+            return;
+        }
+
+        interactStatusText.text = "Left click to Grab Rum";
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        currentRumBottle = hit.collider.GetComponent<RumBottleInteractable>();
+        if (currentRumBottle == null) return;
+
+        currentRumBottle.PickUpBarrel();
+        currentPlayerState.y = 3;
+    }
+
+    // Handles interaction with a fish
     private void HandleFishInteraction(RaycastHit hit)
     {
-        if (currentPlayerState.y == 2)
+        if (currentPlayerState.y == 3 || currentPlayerState.y == 2)
         {
             interactStatusText.text = "";
             return;
@@ -168,6 +201,16 @@ public class PlayerInteract : MonoBehaviour
         currentFish.DropFish();
         currentPlayerState.y = 1;
         currentFish = null;
+    }
+
+    // Drop the currently held fish
+    public void DropCurrentRum()
+    {
+        if (currentRumBottle == null) return;
+
+        currentRumBottle.DropBarrel();
+        currentPlayerState.y = 1;
+        currentRumBottle = null;
     }
 
     // Handle telescope interaction
